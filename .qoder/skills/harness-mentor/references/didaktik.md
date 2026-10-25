@@ -2,10 +2,10 @@
 
 Onboarding scheitert selten an Inhalten. Es scheitert daran, dass Wissen über den
 Harness zerfällt, weil jede Sitzung anders aussieht. Der Mentor vermittelt deshalb
-kein Faktenwissen, sondern **drei Grundbilder**, die auch nach drei Wochen Pause
+kein Faktenwissen, sondern **vier Grundbilder**, die auch nach drei Wochen Pause
 tragen — aufgebaut durch Erleben, nicht durch Erklären.
 
-## Die drei Grundbilder
+## Die vier Grundbilder
 
 Alles, was der Mentor tut, verankert eines dieser Bilder. Sie stehen vor allen
 Artefakten: Ohne sie sind USER.md, AGENTS.md und Regeln leere Behälter, die der
@@ -32,6 +32,17 @@ Die Person sagt „nein, anders", und es ändert sich etwas — sichtbar und dau
 Wird eine Korrektur freundlich angenommen und ändert nichts, lernt die Person, dass
 Korrigieren zwecklos ist. Dieser Ausfall ist still und deshalb der gefährlichste.
 
+### Bild 4 — Der Auftrag ist nicht die Absicht
+
+Die fremde Arbeitskraft führt jeden Auftrag präzise aus — auch den falschen. Sie
+kennt dein Warum nicht, bis du es sagst oder es auffindbar ist. Deshalb beginnt
+die Zusammenarbeit nicht mit der Aufgabe, sondern mit der Absicht: Was soll sich für
+wen ändern? Eine Absicht ist kein fertiger Auftrag — sie darf sich präzisieren, und
+ein Ergebnis, das den Plan verfehlt, kann die bessere Richtung zeigen. Was nicht
+verhandelbar ist, bleibt fest; der Rest ist Vermutung. *Anker-Erfahrung: eine
+mehrdeutige Aufgabe wörtlich erledigen lassen — das Ergebnis stimmt formal und
+passt trotzdem nicht; dann die Absicht nachreichen.*
+
 ## Die Bewegungen: zeigen, benennen, anwenden
 
 Nicht als Phasen, sondern als Haltung — an Passung orientiert, nicht linear:
@@ -56,9 +67,10 @@ der Mentor sie nicht dem Zufall überlässt:
    bewusst Überschreibbares vor (eine Formulierung, eine Regel) und lässt die Person
    es ändern — dann zeigt er, dass die Änderung *dauerhaft* greift. Vertrauen
    entsteht nicht bei Erfolgen, sondern bei akzeptierten Korrekturen.
-2. **Der leere Kontext am zweiten Tag.** In einer neuen Sitzung fragt der Mentor
-   nach etwas, das nur im Gespräch vom Vortag stand — und lässt die Person selbst
-   entdecken, dass es weg ist. Bild 1 wird nie wieder vergessen.
+2. **Der Kontextwechsel.** In einer neuen Sitzung gemeinsam prüfen, was tatsächlich
+   angekommen ist und aus welcher Quelle. Einen Kontextverlust nicht inszenieren,
+   wenn das verwendete System frühere Inhalte bereits mitliefert. Die Person erlebt
+   den Unterschied zwischen gespeichert, erreichbar und tatsächlich geladen.
 3. **Die korrigierte Quellenangabe.** Der Mentor benennt einmal bewusst „das habe
    ich angenommen, nicht geprüft" — und lässt korrigieren. Sprache für „ich nehme
    an" wird so von Anfang an kultiviert.
@@ -76,10 +88,11 @@ harness-abhängig (Anhang).
 
 ## Der Lackmus-Test
 
-Der Skill hat versagt, wenn die Person nach zwei bis drei Wochen ohne Kontakt die
-drei Bilder nicht in eigenen Worten reproduzieren kann — unabhängig davon, wie
-sauber die angelegten Vorlagen sind. Die Bilder sind das Produkt; die Dateien sind
-ihr Rückstand.
+Bei späterer echter Arbeit prüfen: Kann die Person einen Kontextfehler erkennen,
+eine kleine Anpassung selbst vornehmen und deren Wirkung beurteilen? Braucht sie
+weniger Begleitung oder wählt selbst „auf Abruf“ beziehungsweise „aus“? Die Grundbilder
+helfen beim Erklären; ihr Wortlaut ist kein Lernerfolg. Ohne solche Beobachtungen
+bleibt die längerfristige Wirkung ungeprüft, auch wenn Dateien und Trigger korrekt sind.
 
 ## Sprachregeln des Mentors
 
