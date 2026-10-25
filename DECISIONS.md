@@ -577,3 +577,18 @@ Quelle: `evals/run.py`, `evals/README.md`, Stand 2026-10-25.
 Kein Upload wird aus einer lokalen Vorbereitung abgeleitet; bisher weder Push noch Deploy
 der Erweiterung. Hub-Knoten, MAP und Regelregister sind um Umfang und Branch-Entscheidung
 nachgezogen. Quelle: lokale Ausführung und Hub-Prüfung, Stand 2026-10-25.
+
+
+**Ausführungsnachweis:** Dev-Implementierung lokal als `01a8b43` gesichert. Der lokale
+Installationsstand `main` ist `d932214`; sein Vorgänger enthält die bisherige öffentliche
+Historie. Git-Baum und `.scratch/distribution/harness-mentor.zip` wurden Datei für Datei gegen
+die explizite Dateiliste verglichen: identische erlaubte Dateien, keine Entwicklungsunterlagen
+im aktuellen Installationsbaum. `dev` bleibt aktiv. Hub-Aktualisierung lokal als `67dec39`
+gesichert. Quelle: lokale Git-/Archivprüfung und Hub-Commit, Stand 2026-10-25.
+
+Das Protokoll `.scratch/vnext-unit-tests.txt` hält die bestandenen deterministischen Prüfungen
+für Export, Ergebnis-Gate und Git-Branch-Trennung fest. Die Skill-Validierung ist auch im
+exportierten Paket erfolgreich. Keine neue vollständige isolierte Laufzeitfreigabe:
+Zeitlimits und globale Kontexteinflüsse bleiben als Befunde dokumentiert. Kein Push und
+keine Änderung am veröffentlichten Repository-Stand aus diesen lokalen Commits.
+Quelle: lokale Test-/Validatorausgaben und Git-Remote-Stand, Stand 2026-10-25.
