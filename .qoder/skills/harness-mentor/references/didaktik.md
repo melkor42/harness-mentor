@@ -67,9 +67,10 @@ der Mentor sie nicht dem Zufall überlässt:
    bewusst Überschreibbares vor (eine Formulierung, eine Regel) und lässt die Person
    es ändern — dann zeigt er, dass die Änderung *dauerhaft* greift. Vertrauen
    entsteht nicht bei Erfolgen, sondern bei akzeptierten Korrekturen.
-2. **Der leere Kontext am zweiten Tag.** In einer neuen Sitzung fragt der Mentor
-   nach etwas, das nur im Gespräch vom Vortag stand — und lässt die Person selbst
-   entdecken, dass es weg ist. Bild 1 wird nie wieder vergessen.
+2. **Der Kontextwechsel.** In einer neuen Sitzung gemeinsam prüfen, was tatsächlich
+   angekommen ist und aus welcher Quelle. Einen Kontextverlust nicht inszenieren,
+   wenn das verwendete System frühere Inhalte bereits mitliefert. Die Person erlebt
+   den Unterschied zwischen gespeichert, erreichbar und tatsächlich geladen.
 3. **Die korrigierte Quellenangabe.** Der Mentor benennt einmal bewusst „das habe
    ich angenommen, nicht geprüft" — und lässt korrigieren. Sprache für „ich nehme
    an" wird so von Anfang an kultiviert.
@@ -87,10 +88,11 @@ harness-abhängig (Anhang).
 
 ## Der Lackmus-Test
 
-Der Skill hat versagt, wenn die Person nach zwei bis drei Wochen ohne Kontakt die
-vier Bilder nicht in eigenen Worten reproduzieren kann — unabhängig davon, wie
-sauber die angelegten Vorlagen sind. Die Bilder sind das Produkt; die Dateien sind
-ihr Rückstand.
+Bei späterer echter Arbeit prüfen: Kann die Person einen Kontextfehler erkennen,
+eine kleine Anpassung selbst vornehmen und deren Wirkung beurteilen? Braucht sie
+weniger Begleitung oder wählt selbst „auf Abruf“ beziehungsweise „aus“? Die Grundbilder
+helfen beim Erklären; ihr Wortlaut ist kein Lernerfolg. Ohne solche Beobachtungen
+bleibt die längerfristige Wirkung ungeprüft, auch wenn Dateien und Trigger korrekt sind.
 
 ## Sprachregeln des Mentors
 

@@ -83,6 +83,23 @@ def load_cases() -> list[dict]:
     return data["cases"]
 
 
+def validate_test_config(config: str | None) -> Path:
+    if not config:
+        raise ValueError('Live-Evals brauchen --config-dir mit einem separaten Testprofil; kein stiller Rückgriff auf das persönliche Profil.')
+    root = Path(config).resolve()
+    if not root.is_dir():
+        raise ValueError('Das separate Testprofil existiert nicht.')
+    for personal in (Path.home() / '.qoder', Path.home() / '.qoder-cli'):
+        if root == personal.resolve() or root.is_relative_to(personal.resolve()):
+            raise ValueError('Das persönliche Qoder-Profil darf kein synthetisches Testprofil ersetzen.')
+    return root
+
+
+def evaluation_exit_status(results: list[dict]) -> int:
+    # A detected trigger does not turn a timeout or an artifact violation into a pass.
+    return 0 if results and all(result.get('auto_pass') is True for result in results) else 1
+
+
 def select_cases(cases: list[dict], wanted: str | None) -> list[dict]:
     if not wanted:
         return cases
@@ -252,6 +269,8 @@ def run_once(
     ]
     if args.model:
         command.extend(["-m", args.model])
+    if args.config_dir:
+        command.extend(['--config-dir', str(args.config_dir)])
 
     started = time.monotonic()
     timed_out = False
@@ -478,6 +497,7 @@ def write_markdown(report: dict, args: argparse.Namespace) -> Path:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cli", help="Pfad zu qodercli")
+    parser.add_argument('--config-dir', help='Separates, eingerichtetes Testprofil für Live-Evals; persönliche Konfiguration wird nicht kopiert')
     parser.add_argument("--cases", help="Komma-getrennte Fall-IDs, z. B. P1,P2,N1")
     parser.add_argument("--runs", type=int, help="Läufe pro Fall; überschreibt cases.json")
     parser.add_argument("--model", help="Modell für qodercli -m")
@@ -526,6 +546,11 @@ def main() -> int:
             say(f"{case['id']}: {'trigger' if case['should_trigger'] else 'kein Trigger'} — {case['prompt']}")
         return 0
 
+    if not args.dry_run:
+        try:
+            args.config_dir = validate_test_config(args.config_dir)
+        except ValueError as exc:
+            raise SystemExit(str(exc)) from exc
     cli = find_cli(args.cli)
     label = args.label or datetime.now().strftime("%Y-%m-%d-%H%M%S")
     label = re.sub(r"[^A-Za-z0-9_.-]+", "-", label).strip("-") or "run"
@@ -611,9 +636,7 @@ def main() -> int:
     say(f"  JSON:            {json_path}")
     say(f"  Markdown:        {md_path}")
     say(f"  Rohspuren:       {RAW_DIR / label}")
-    if args.without_skill:
-        return 0
-    return 0 if summary["trigger_pass"] == summary["trigger_runs"] else 1
+    return evaluation_exit_status(results)
 
 
 if __name__ == "__main__":

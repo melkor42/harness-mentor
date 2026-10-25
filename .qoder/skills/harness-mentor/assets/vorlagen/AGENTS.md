@@ -1,6 +1,7 @@
 # AGENTS.md — Arbeitsregeln für diesen Workspace
 
-<!-- Die Datei, die der Agent zu Beginn liest. Kurz halten: jede Zeile kostet
+<!-- Beispiel einer Regeldatei: nativen Namen, Geltungsbereich und Ladeweg prüfen.
+     Nur benötigte Inhalte in eine vorhandene native Datei übernehmen. Kurz halten: jede Zeile kostet
      in jeder Session Kontext. Regeln führen oder sie blockieren — nimm nur
      auf, was führt: für viele Fälle gilt und dem Agenten den Weg freilässt.
      Jede Regel, die veralten kann, braucht Datum und Umkehrbedingung. -->
@@ -23,11 +24,13 @@
 
 ## Harte Regeln
 
-<!-- Die erste Regel steht schon fest — die Voreinstellung aus dem Setup:
+<!-- Vorhandene Freigaben erhalten. Nur für ein neues Setup ohne Festlegung als
+     Start vorschlagen und gemeinsam vereinbaren:
      „eng führen (seit <Einrichtungsdatum>): Entwürfe vorlegen, vor Handlungen
      mit Außenwirkung fragen." Die Absichts-Regel steht oben unter „Auftrag und
      Absicht". Jede spätere Lockerung wird als eigene datierte Regel darunter
-     angehängt, nie überschrieben.
+     mit Quelle und Geltungsbereich festgehalten. Aktueller Stand bleibt eindeutig;
+     ersetzte Regeln gelten nicht parallel weiter.
 
      Muster einer führenden Regel (verbessert jede Antwort, sperrt keinen Weg):
      „Lange Ergebnisse: Kern in wenigen Sätzen zuerst, meine To-dos sichtbar

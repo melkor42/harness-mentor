@@ -520,3 +520,60 @@ Quelle: `docs/product-plan.md`, Architektur-README und diese Abschlussprüfung, 
 **Commit-Nachweis Website:** `6ddbcde` — „Separate skill exhibits and finish Harness Mentor
 presentation“. Website-Arbeitsverzeichnis nach Commit sauber; kein Push. Der eigene
 Harness-Mentor-Commit enthält diesen Bericht. Quelle: lokale Git-Prüfung, Stand 2026-10-25.
+
+
+## 2026-10-25 — Erweiterungen freigegeben; dev für Entwicklung, main für Installation
+
+**Manuel hat freigegeben:** die vorgeschlagenen gezielten Erweiterungen des vorhandenen Skills.
+Auf seine Frage zu den vielen Unterlagen folgt seine Entscheidung: bisherige öffentliche
+Historie behalten; Entwicklung und Evals auf `dev`, aktueller Installationsstand auf `main`.
+Quelle: Freigabe, Antwort zur Historie und Dev-Branch-Vorschlag im Chat, Stand 2026-10-25.
+
+**Umgesetzt:** Bestandsdiagnose vor Einrichtung mit vorhandenen Dateien, Werkzeugen und
+Ladewegen; Vorlagen an tatsächliche native Konventionen anpassen; vorhandene Freigaben
+nicht zurücksetzen; ungelöste Konflikte mit Quelle/Geltungsbereich prüfen und Reparatur
+anbieten. Aktuellen Memory-Zustand aktualisieren, Gründe kompakt erhalten und Routine-
+Schweigeprotokolle vermeiden. Begleitstatus aktiv/pausiert/aus von Begleitgrad und externen
+Handlungsrechten trennen; Pause und Ende respektieren. Wiedereinstieg nur durch erneute
+Anfrage oder einen konkret verfügbaren, gewünschten und geprüften Mechanismus. Selbstständige
+Anwendung ersetzt eine Pflichtprüfung des Begriffswortlauts. Hooks sind ausdrücklich keine
+eigenständige Sicherheitsgrenze. Quelle: aktueller Skill unter `.qoder/skills/harness-mentor/`,
+Stand 2026-10-25.
+
+**Öffentliche Installation:** Nutzer-README, aktueller Skill, benötigte Referenzen und Vorlagen
+stehen in der expliziten Dateiliste `scripts/package_skill.py`. Vorgänger-Skill, Evals,
+Entscheidungsprotokolle, Planungsunterlagen und Entwicklungswerkzeuge gelangen nicht in den
+aktuellen `main`-Baum. Die alte öffentliche Historie bleibt zugänglich. `dev` ist nach einem
+Push in das öffentliche Repository ebenfalls öffentlich und daher kein Vertraulichkeitsort.
+Persönliche Ausgaben/Rohspuren bleiben lokal ausgeschlossen. Quelle: Manuels Entscheidung und
+Exportscript, Stand 2026-10-25.
+
+**Branch-Verfahren:** Der bisherige lokale Entwicklungsstand heißt jetzt `dev` und ist nicht
+mehr versehentlich an `origin/main` gekoppelt. `scripts/prepare_release.py` bereitet nach einem
+geprüften Dev-Commit den lokalen `main` ausschließlich aus der Dateiliste über einen separaten
+Git-Index vor; sein Parent ist der vorherige öffentliche beziehungsweise freigegebene Main-Stand.
+Kein vollständiger Merge aus `dev`, kein Force-Push, keine History-Umschreibung. Der aktive
+Dev-Checkout und sein Index werden nicht ersetzt. Das Verfahren ist in einem wegwerfbaren
+synthetischen Git-Repo auf History-Erhalt, Installationsbaum und Idempotenz geprüft.
+Quelle: `scripts/prepare_release.py`, `tests/test_prepare_release.py`, Stand 2026-10-25.
+
+**Prüfung und Grenzen:** Paketgrenzen, nicht überschreibender Export, vollständige Pflichtdateien,
+Ergebnis-Gate und Branch-Verfahren bestehen die lokalen synthetischen Tests. Skill-Frontmatter
+und Python-Syntax werden geprüft. In Qoder erkannten die neuen Szenarien P9/P10/P11 den Skill;
+P9/P11 beendeten sich mit bestandenen automatischen Checks, P10 endete im Zeitlimit. Manuell
+waren globale Kontext-/Hook-Einflüsse sichtbar. Deshalb keine saubere Isolation oder
+Freigabebehauptung aus diesen Läufen. Die zusätzliche Regression wurde abgebrochen; auch dort
+ist der positive Fall nicht vollständig grün. Quelle: lokale Ergebnisse und Rohspuren unter
+`evals/results/2026-10-25-vnext*`, `tests/`, Stand 2026-10-25.
+
+**Konsequenz für künftige Tests:** Live-Läufe verlangen ein separat eingerichtetes Testprofil;
+kein stiller Rückgriff auf das persönliche Qoder-Profil, keine Credential-Kopie. Ein Profil
+allein erzwingt keine Dateisicherheitsgrenze. Der Runner meldet einen nicht erfolgreichen
+Lauf auch dann als Fehler, wenn dessen Trigger erkannt wurde. Ein sauber isolierter
+Verhaltenslauf und eine echte längere Nutzung bleiben offene Nachweise.
+Quelle: `evals/run.py`, `evals/README.md`, Stand 2026-10-25.
+
+**Auslieferung:** Installationsarchiv und lokaler Main-Branch werden zur Prüfung vorbereitet.
+Kein Upload wird aus einer lokalen Vorbereitung abgeleitet; bisher weder Push noch Deploy
+der Erweiterung. Hub-Knoten, MAP und Regelregister sind um Umfang und Branch-Entscheidung
+nachgezogen. Quelle: lokale Ausführung und Hub-Prüfung, Stand 2026-10-25.

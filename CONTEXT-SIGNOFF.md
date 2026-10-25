@@ -5,10 +5,14 @@ Manuel hat den zunächst gewünschten Namen Set Me Up zurückgenommen. Es handel
 persönlichen Onboarding- und Begleit-Skill mit dem Ziel der eigenständigen Harness-Nutzung.
 Der aktuelle Einstieg liegt in [`.qoder/skills/harness-mentor/SKILL.md`](.qoder/skills/harness-mentor/SKILL.md).
 Der [Funktionsabgleich](docs/product-plan.md#funktionsabgleich-und-änderungsplan) trennt vorhandene
-Anweisungen, beobachtete Wirkung und noch vorgeschlagene Erweiterungen. Funktionale Erweiterungen
-sind nicht freigegeben und wurden bei der Namensangleichung nicht implementiert.
+Anweisungen, beobachtete Wirkung und noch vorgeschlagene Erweiterungen. Die vorgeschlagenen funktionalen Erweiterungen sind inzwischen freigegeben und als
+Skill-Anweisungen umgesetzt: Bestandsdiagnose, native Konventionen, Kontextreparatur,
+vereinbarte Wiederaufnahme und selbstständige Anwendung. Technische Unterstützung
+und langfristige Wirkung bleiben anhand konkreter Installationen zu prüfen.
+Entwicklung und Evals liegen auf `dev`; `main` wird über die explizite Dateiliste
+als Installationsstand vorbereitet. Die öffentliche Historie bleibt erhalten.
 Die älteren Abschnitte unten bleiben Vorgeschichte. Quelle: Manuels Auftrag und Namenskorrektur
-im aktuellen Chat, Stand 2026-10-25.
+sowie Freigabe der Weiterentwicklung und Branch-Trennung im aktuellen Chat, Stand 2026-10-25.
 
 **Historischer Stand 2026-10-11 — durch den aktuellen Vorrang oben präzisiert.** Das Produkt ist nicht mehr der
 Messprüfstand, sondern ein **Skill**: ein geführtes Setup, das eine Person an die Hand nimmt, die zum

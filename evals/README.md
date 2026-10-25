@@ -38,7 +38,10 @@ Die vollständige Liste mit Prompts und manuellen Checks steht in
 
 ## Starten
 
-Voraussetzungen: Python 3.11+, eine angemeldete Qoder-CLI. Keine externen Pakete.
+Voraussetzungen: Python 3.11+, eine Qoder-CLI und ein separat eingerichtetes Testprofil.
+Keine externen Python-Pakete. Persönliche Einstellungen, Hooks und Credentials werden
+nicht in das Testprofil kopiert. Live-Läufe brauchen ausdrücklich `--config-dir`;
+Dateirechte und tatsächliche Isolation sind zusätzlich außerhalb des Modells zu prüfen.
 
 ```bash
 # Fälle anzeigen
@@ -48,19 +51,19 @@ python evals/run.py --list-cases
 python evals/run.py --dry-run --cases P1,N1
 
 # Pilot: ein Lauf pro Fall
-python evals/run.py --runs 1 --label pilot
+python evals/run.py --config-dir "PFAD_ZUM_TESTPROFIL" --runs 1 --label pilot
 
 # Baseline: Läufe aus cases.json (positive 3, negative 2–3)
-python evals/run.py --label 2026-10-24-baseline
+python evals/run.py --config-dir "PFAD_ZUM_TESTPROFIL" --label 2026-10-24-baseline
 
 # Einzelne Fälle
-python evals/run.py --cases P5,P6,N3
+python evals/run.py --config-dir "PFAD_ZUM_TESTPROFIL" --cases P5,P6,N3
 
 # Ablation: dieselben positiven Fälle ohne kopierten Skill
-python evals/run.py --cases P1,P2,P3,P4,P5 --runs 2 --without-skill --label ablation
+python evals/run.py --config-dir "PFAD_ZUM_TESTPROFIL" --cases P1,P2,P3,P4,P5 --runs 2 --without-skill --label ablation
 
 # Workspaces zum Nachsehen behalten
-python evals/run.py --cases P5 --runs 1 --keep
+python evals/run.py --config-dir "PFAD_ZUM_TESTPROFIL" --cases P5 --runs 1 --keep
 ```
 
 Optionen: `--cli` (Pfad zu `qodercli`), `--model`, `--timeout` (Sekunden pro Lauf),
@@ -110,7 +113,9 @@ kombinierte Rate steht im `DECISIONS.md`-Eintrag.
 - **Nur Qoder.** Claude Code und Cursor sind ungeprüft; der Punkt „harness-neutral" bleibt
   offen, bis dort gemessen wurde.
 - **Frische Workspaces, keine frische Umgebung.** Maschine, globales Qoder-Profil und
-  globale Plugins sind in jedem Lauf dieselben. Das ist eine bekannte Verzerrung.
+  globale Plugins waren in den bisherigen Läufen dieselben. Das ist eine bekannte
+  Verzerrung. Der Runner verlangt nun ein separates Testprofil; dieses allein ist
+  jedoch keine Dateizugriffs- oder Netzwerk-Sicherheitsgrenze.
 - **Workspace im Repo.** Der Sandbox-Ordner liegt unter `.sandbox/` im Repo. Das Modell
   kann per Pfad die echte `AGENTS.md` des Repos finden und lesen; das beeinflusst
   Antwortinhalte (besonders N3), nicht die Trigger-Entscheidung. Ein Workspace außerhalb
@@ -159,3 +164,26 @@ die Schwachstellen des Skills ungefiltert.
   <https://ai.engineer/talks/0vphxNt4wyk-dont-ship-skills-without-evals>.
 - [`docs/product-plan.md`](../docs/product-plan.md) — Persona-Probeläufe und Retention-Check.
 - [`DECISIONS.md`](../DECISIONS.md) — v1-Probelauf und v2-Entscheidungen.
+
+
+## Erweiterte Szenarien und Branch-Grenze
+
+P9 prüft gezielte Diagnose einer vorhandenen Umgebung ohne neue Dateien oder Zurücksetzen
+bestehender Freigaben. P10 prüft ein alternatives Einstiegsdokument ohne erfundene automatische
+Ladung. P11 prüft eine pausierte Begleitung ohne Hintergrund- oder Erinnerungsversprechen.
+Die Quellen, synthetischen Fixtures und der Runner liegen auf `dev`; sie werden nicht in den
+Installationsbaum von `main` exportiert. Ergebnisse und Rohspuren bleiben lokal ausgeschlossen.
+Quelle: Manuels Erweiterungs- und Branch-Auftrag, Stand 2026-10-25.
+
+
+**Befund der neuen Szenarien:** P9 und P11 beendeten sich mit bestandenen automatischen
+Checks; P10 erkannte den Skill, erreichte aber das Zeitlimit. Die manuelle Sichtung zeigte
+Einflüsse globaler Regeln und Hook-Informationen, daher keine saubere Isolation und kein
+vollständiger Wirksamkeitsnachweis. Die zusätzliche P3/N3-Regressionsserie wurde beendet;
+P3 hatte den Trigger erkannt, aber das Zeitlimit erreicht. Sie ist kein grüner Regressionslauf.
+Quelle: lokale Rohspuren/Ergebnisse unter `results/2026-10-25-vnext*`, Stand 2026-10-25.
+
+Der Runner gibt nun auch bei Zeitlimit, fehlgeschlagenem Artefaktcheck oder unvollständigem
+Ergebnis einen Fehlerstatus zurück; reine Trigger-Raten überstimmen diese Fehler nicht.
+Paketgrenzen, Ergebnis-Gate und Dev/Main-Trennung werden außerdem mit synthetischen lokalen
+Tests unter `tests/` geprüft. Quelle: `run.py` und `tests/`, Stand 2026-10-25.

@@ -6,8 +6,8 @@
 KI-Agenten; bestehende Umgebung verstehen, gemeinsam verbessern, persönlichen Kontext pflegen
 und die Person zur eigenständigen Nutzung befähigen. Begleitung nimmt mit Erfahrung ab.
 **Name:** Harness Mentor (`harness-mentor`). Der zwischenzeitlich gewünschte Name Set Me Up ist
-durch Manuels Korrektur ersetzt. **Umfang dieser Änderung:** Namensangleichung und Analyse;
-keine funktionale Erweiterung. Quelle: Manuels Auftrag und anschließende Namenskorrektur im Chat,
+durch Manuels Korrektur ersetzt. **Umfang:** Namensangleichung, Analyse und inzwischen von Manuel freigegebene gezielte
+Weiterentwicklung. Quelle: Manuels Auftrag, Namenskorrektur und Freigabe der Erweiterungen im Chat,
 Stand 2026-10-25.
 
 ### Befund am aktuellen Bestand
@@ -20,14 +20,14 @@ diesem Auftrag vorhandener Änderungen. Die Architektur bleibt Skill als Program
 
 | Ziel | Status | Beleg und verbleibende Lücke |
 |---|---|---|
-| Bestehenden Harness analysieren und Verbesserungen finden | **Teilweise** | `references/einrichten-leitfaden.md`, Block 0, fragt nach Harness und vorhandenen Regeln und verlangt deren Erhalt. Es fehlt ein systematischer Abgleich von aktiven Konfigurationsorten, Ladereihenfolge, verfügbaren Funktionen und Konflikten. Ohne Begleitnotiz führt die Moduswahl immer in Einrichten, auch bei einer bereits erfahrenen Person. |
-| Im Dialog passende Arbeitsweisen entwickeln | **Implementiert** | Einrichten-Leitfaden: Zweck jeder Frage, Verhaltens-Prüfstein, vorhandene Antworten wiederverwenden, Vorschläge zur Korrektur, Sprache und Beispiele anpassen. Einschränkung: „eng führen“ wird einheitlich voreingestellt; bereits gültige Freigaben und Erfahrung sind nicht ausdrücklich von dieser Vorgabe ausgenommen. |
+| Bestehenden Harness analysieren und Verbesserungen finden | **Implementiert als Anweisung** | `references/bestandsaufnahme.md` erfasst aktuelle Umgebung, native Kontextorte, Ladebelege, Werkzeuge und Konflikte. Die Moduswahl erlaubt gezielte Diagnose ohne Begleitnotiz und ohne erneutes Erst-Onboarding. |
+| Im Dialog passende Arbeitsweisen entwickeln | **Implementiert** | Einrichten-Leitfaden: Zweck jeder Frage, Verhaltens-Prüfstein, vorhandene Antworten wiederverwenden, Vorschläge zur Korrektur, Sprache und Beispiele anpassen. Bestehende Freigaben und Erfahrung werden erhalten; ein Startniveau wird nur bei einem neuen Setup ohne Festlegung gemeinsam vereinbart. |
 | USER-, Regel-, Vision- und Memory-Dateien aufbauen | **Implementiert** | Leitfaden und `assets/vorlagen/` liefern Dateien, Strukturen und Memory-Schreibregeln; vorhandener Kontext soll erhalten bleiben. Der tatsächliche Ladeeffekt ist gesondert zu prüfen. |
-| Die tatsächlichen Dateikonventionen des Harness beachten | **Teilweise** | `references/anhaenge/qoder.md` ist der einzige Anhang und enthält feste Pfade eines Referenzrechners. Der Kern setzt vielfach `AGENTS.md`, `USER.md` und ein bestimmtes Memory-Schema voraus. Verifizierte Anpassungen für andere Harnesses fehlen. |
-| Fehlende Funktionen und Strukturen erkennen und anbieten | **Teilweise** | Begleiten-Disziplin benennt wiederholte Reibung, fehlenden Kontext und Werkzeuge aus der tatsächlichen Werkzeugliste. Ein initialer bedarfsbezogener Funktionsabgleich und die Unterscheidung verfügbar/deaktiviert/nicht geprüft fehlen als expliziter Ablauf. |
-| Kontext kontinuierlich verbessern | **Teilweise** | Memory-Hygiene, Umkehrbedingungen, Quellenpflicht und Pflege bei Fehlern/Richtungsänderung sind vorhanden. Widerspruch: Zustand soll aktualisiert werden, die Begleitnotiz dagegen nur angehängt und zugleich klein gehalten werden. Eine eindeutige Regel zur aktuellen Zustandsansicht fehlt. |
-| In den ersten Tagen und Wochen begleiten | **Teilweise** | Begleitnotiz, vereinbarter Pflegeanlass, Fortsetzung und Retention-Gegenprobe sind beschrieben. Ein optionaler Qoder-Hook wird erwähnt, aber nicht eingerichtet oder als wirksamer Wiederaufnahmeweg nachgewiesen. Ein Skill allein wacht nicht zu einem Termin auf. |
-| Nur hilfreich und mit Rückzugsmöglichkeit eingreifen | **Implementiert** | Begleiten-Disziplin fordert beobachtbare Signale, Kosten des Schweigens, begrenzte Interventionen und akzeptierte Ablehnung. Pausen-/Snooze-Semantik und ein protokollarmer Umgang mit Schweigen sind noch nicht eindeutig beschrieben. |
+| Die tatsächlichen Dateikonventionen des Harness beachten | **Implementiert als Diagnoseablauf; weitere Harnesses ungeprüft** | Native Dateien und Ladewege gehen vor Vorlagen. Der Qoder-Anhang verwendet Profil-Platzhalter und kennzeichnet Referenzwissen. Automatische Ladung, manuelles Lesen und Erreichbarkeit werden getrennt. Zertifizierte andere Harness-Anbindungen fehlen weiterhin. |
+| Fehlende Funktionen und Strukturen erkennen und anbieten | **Implementiert als Anweisung** | Die Bestandsaufnahme vergleicht das konkrete Anliegen mit vorhandenen Werkzeugen/Rechten; verfügbar, nicht verbunden und ungeprüft bleiben unterscheidbar. Einrichtung bleibt ein bedarfsbezogenes Angebot. |
+| Kontext kontinuierlich verbessern | **Implementiert als Anweisung** | Konfliktprüfung mit Quelle und Geltungsbereich, Aktualisierung des aktuellen Zustands und kompakter Erhalt wichtiger Gründe; keine Schweigechronik. Begleitstatus und technische Freigaben sind getrennt. |
+| In den ersten Tagen und Wochen begleiten | **Teilweise** | Begleitnotiz, vereinbarter Pflegeanlass, Fortsetzung und Retention-Gegenprobe sind beschrieben. Wiedereinstieg wird ausdrücklich vereinbart; ohne geprüften Mechanismus nur nach erneutem Nutzeraufruf. Pause und Ende sind umgesetzt. Automatische Auslöser und echte Nutzung über Wochen bleiben installationsabhängig beziehungsweise ungeprüft. |
+| Nur hilfreich und mit Rückzugsmöglichkeit eingreifen | **Implementiert** | Begleiten-Disziplin fordert beobachtbare Signale, Kosten des Schweigens, begrenzte Interventionen und akzeptierte Ablehnung. Pause, ausdrückliche Wiederaufnahme, sofortiges Ende und protokollarmer Umgang mit Schweigen sind nun ausdrücklich geregelt. |
 | Befähigung statt Abhängigkeit | **Implementiert; Wirkung ungeprüft** | Didaktik verlangt eigenes Anwenden und Korrigieren; Begleitung bietet bei belegter Selbstständigkeit ihr Ende an und akzeptiert „aus“. Ein längerfristiger unabhängiger Nutzerbefund liegt nicht vor. |
 
 Quelle für die gesamte Tabelle: `.qoder/skills/harness-mentor/SKILL.md`, dessen
@@ -48,7 +48,7 @@ weiter erreichbar waren. Der Unterschied zwischen „mit Skill“ und „ohne Sk
 nicht sauber nachgewiesen. Quelle: `../evals/results/2026-10-24-variance.md`,
 `../evals/results/2026-10-24-ablation.md` und `../evals/README.md`, Stand 2026-10-24.
 
-### Priorisierter Vorschlag — noch nicht implementieren
+### Freigegebener Änderungsplan und verbleibende Prüfung
 
 | Priorität | Betroffene Dateien | Konkrete Anpassung | Abnahme |
 |---|---|---|---|
@@ -61,8 +61,32 @@ nicht sauber nachgewiesen. Quelle: `../evals/results/2026-10-24-variance.md`,
 | Mittel: Wirksamkeit und Selbstständigkeit belegen | `evals/cases.json`, `evals/run.py`, `evals/README.md`, `references/didaktik.md` | Fälle für bestehenden Workspace, alternative Dateikonvention, fehlenden Trigger, Pause und Kontextkonflikt ergänzen. Ablation wirklich isolieren. Retention mit realer Nutzung prüfen; eigenes Korrigieren und Weiterarbeiten höher gewichten als das Wiedergeben von Begriffen. | Reproduzierbare technische Befunde und getrennt dokumentierter Nutzerbefund; keine Qualitätsbehauptung allein aus Trigger-Raten. |
 
 Alle Skill-Pfade in dieser Tabelle sind relativ zu `.qoder/skills/harness-mentor/`, Eval-Pfade
-relativ zum Repository. Reihenfolge ist eine Agentenempfehlung, keine Freigabe. Quelle: Abgleich
+relativ zum Repository. Die Anweisungsänderungen sind von Manuel freigegeben und umgesetzt; Verhaltens- und
+Langzeitnachweise bleiben gesondert zu prüfen. Diese Priorisierung entstand aus dem Abgleich. Quelle: Abgleich
 des oben genannten Bestands mit Manuels Zielvorstellung, Stand 2026-10-25.
+
+### Entwicklung auf dev, Installation auf main
+
+Manuel hat die Branch-Trennung gewählt: `dev` enthält Entwicklung, synthetische Evals,
+interne Planung und Prüfcode. `main` wird ausschließlich aus der Dateiliste in
+`scripts/package_skill.py` erzeugt: Nutzer-README und aktueller Skill mit benötigten
+Referenzen und Vorlagen. Der Vorgänger-Skill, Entscheidungsprotokolle, Evals und
+Entwicklungswerkzeuge gehören nicht in den aktuellen Installationsbaum.
+
+`dev` ist im öffentlichen Repository nach einem Push ebenfalls öffentlich. Rohspuren,
+persönliche Ausgaben und `evals/results/` bleiben lokal gitignoriert. Die bisherige
+öffentliche Historie wird auf Manuels Entscheidung erhalten; frühere Dokumente bleiben
+in alten Commits zugänglich. Ein sauberer aktueller Baum ist keine Löschung alter Daten.
+Quelle: Manuels Antworten zur Historie und zum Dev-Branch im Chat, Stand 2026-10-25.
+
+Lokaler Ablauf: Änderungen auf `dev` prüfen und committen. Mit
+`python scripts/package_skill.py --output .scratch/distribution/<neuer-name>` einen
+neuen Installationsbaum und ZIP erzeugen. Nach aktuellem Fetch erzeugt
+`python scripts/prepare_release.py` den lokalen `main`-Commit über einen separaten
+Git-Index. Sein Parent bleibt der bisherige öffentliche Stand beziehungsweise der
+vorige `main`-Release. Der aktive Dev-Checkout und sein Index bleiben erhalten.
+`dev` niemals vollständig nach `main` mergen; dadurch würden Entwicklungsunterlagen
+wieder im Installationsbaum erscheinen. Die Skripte führen keinen Push aus.
 
 ### Namensmigration und offene Handgriffe
 

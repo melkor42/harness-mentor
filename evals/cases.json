@@ -93,7 +93,10 @@
       "auto_checks": {
         "expect_no_harness_artifacts": false,
         "expect_memory_write": true,
-        "memory_files": ["memory/MEMORY.md", "memory/project-begleitung.md"]
+        "memory_files": [
+          "memory/MEMORY.md",
+          "memory/project-begleitung.md"
+        ]
       },
       "seed": {
         "files": {
@@ -118,7 +121,10 @@
       "auto_checks": {
         "expect_no_harness_artifacts": false,
         "expect_memory_write": true,
-        "memory_files": ["memory/MEMORY.md", "memory/project-begleitung.md"]
+        "memory_files": [
+          "memory/MEMORY.md",
+          "memory/project-begleitung.md"
+        ]
       },
       "seed": {
         "files": {
@@ -177,7 +183,9 @@
       "mode": "keiner",
       "runs": 2,
       "why": "Normale Coding-Hilfe. Der Mentor darf nicht aus Höflichkeit einsteigen.",
-      "checks": ["Direkte Hilfe, kein Onboarding, keine Rückfrage nach der Absicht des Lebens."],
+      "checks": [
+        "Direkte Hilfe, kein Onboarding, keine Rückfrage nach der Absicht des Lebens."
+      ],
       "auto_checks": {
         "expect_no_harness_artifacts": true,
         "expect_memory_write": false
@@ -191,7 +199,9 @@
       "mode": "keiner",
       "runs": 2,
       "why": "Faktische Frage, kein Einrichtungsbedarf.",
-      "checks": ["Faktische Antwort, kein Mentor-Onboarding."],
+      "checks": [
+        "Faktische Antwort, kein Mentor-Onboarding."
+      ],
       "auto_checks": {
         "expect_no_harness_artifacts": true,
         "expect_memory_write": false
@@ -205,7 +215,9 @@
       "mode": "keiner",
       "runs": 3,
       "why": "Gezielte Änderung an einer bestehenden Datei. Der Skill darf nicht übernehmen, nur weil AGENTS.md fällt.",
-      "checks": ["Direkte Hilfe oder gezielte Rückfrage; kein neues Setup, keine Grundbilder."],
+      "checks": [
+        "Direkte Hilfe oder gezielte Rückfrage; kein neues Setup, keine Grundbilder."
+      ],
       "auto_checks": {
         "expect_no_harness_artifacts": true,
         "expect_memory_write": false
@@ -219,7 +231,9 @@
       "mode": "keiner",
       "runs": 2,
       "why": "Ein anderer Skill ist zuständig. Kein Übernehmen.",
-      "checks": ["Nicht übernehmen, nicht umleiten, normal weiterhelfen."],
+      "checks": [
+        "Nicht übernehmen, nicht umleiten, normal weiterhelfen."
+      ],
       "auto_checks": {
         "expect_no_harness_artifacts": true,
         "expect_memory_write": false
@@ -233,7 +247,9 @@
       "mode": "keiner",
       "runs": 2,
       "why": "Technischer Fehler, kein Harness-Onboarding.",
-      "checks": ["Coding-Hilfe, kein Mentor, keine Grundbilder."],
+      "checks": [
+        "Coding-Hilfe, kein Mentor, keine Grundbilder."
+      ],
       "auto_checks": {
         "expect_no_harness_artifacts": true,
         "expect_memory_write": false
@@ -247,12 +263,82 @@
       "mode": "keiner",
       "runs": 2,
       "why": "Allgemeinwissen, kein Harness-Bezug.",
-      "checks": ["Direkte Erklärung, kein Onboarding."],
+      "checks": [
+        "Direkte Erklärung, kein Onboarding."
+      ],
       "auto_checks": {
         "expect_no_harness_artifacts": true,
         "expect_memory_write": false
       },
       "seed": null
+    },
+    {
+      "mode": "einrichten",
+      "runs": 1,
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "id": "P9",
+      "prompt": "Bitte nutze Harness Mentor für eine gezielte Bestandsdiagnose. Ich arbeite längst mit Qoder; die vorhandene AGENTS.md und USER.md gelten weiter. Kein neues Interview, keine neue Datei und keine Änderung: Nenne nur eine belegte Verbesserung oder bestätige, dass für mein Anliegen nichts fehlt. Mein Anliegen: weniger wiederholtes Erklären meines Antwortformats.",
+      "should_trigger": true,
+      "why": "Bestehendes Setup ohne Begleitnotiz darf keinen Erstaufbau oder Autonomie-Reset auslösen.",
+      "checks": [
+        "Liest vorhandene Regeln und Profil vor Diagnose.",
+        "Kein neues vollständiges Interview, keine neue Datei und keine Zurücksetzung gültiger Freigaben.",
+        "Befund mit Quelle; keine behauptete automatische Ladung aus bloßer Existenz."
+      ],
+      "seed": {
+        "files": {
+          "AGENTS.md": "# Regeln\nLange Antworten beginnen mit dem Kern. Lokale Dokumentationskorrekturen sind freigegeben.\nProfil bei Bedarf: USER.md.\n",
+          "USER.md": "# Arbeitsweise\nIch bevorzuge kurze deutsche Antworten und nachvollziehbare Quellen.\n"
+        }
+      }
+    },
+    {
+      "mode": "einrichten",
+      "runs": 1,
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "id": "P10",
+      "prompt": "Prüfe mit Harness Mentor die Dateikonventionen meines selbst eingerichteten Harness. Mein Einstieg heißt WORKSPACE.md; mein Profil steht darin. Bitte keine AGENTS.md, USER.md oder Memory-Struktur anlegen. Unterscheide, was du hier manuell liest, von einem nachgewiesenen automatischen Ladeweg. Wir brauchen heute nur die Diagnose.",
+      "should_trigger": true,
+      "why": "Native Konventionen und unbekannte automatische Ladung ehrlich behandeln.",
+      "checks": [
+        "Verwendet WORKSPACE.md statt neue parallele Standarddateien anzulegen.",
+        "Automatische Ladung bleibt ohne Beleg ungeprüft.",
+        "Kein Erstinterview oder erfundene Herstellereigenschaft."
+      ],
+      "seed": {
+        "files": {
+          "WORKSPACE.md": "# Einstieg\n## Mein Profil\nIch arbeite als Designerin und bevorzuge deutsche Kurzfassungen.\n## Regeln\nBestehende Gestaltung erhalten; bei Unklarheit eine gezielte Rückfrage.\n"
+        }
+      }
+    },
+    {
+      "mode": "einrichten",
+      "runs": 1,
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "id": "P11",
+      "prompt": "Nutze Harness Mentor. Meine Begleitung ist pausiert und bleibt es. Heute möchte ich nur wissen: Läuft durch die gespeicherte Notiz von selbst eine Erinnerung, wenn ich den Rechner schließe? Bitte nichts einrichten und keine Dateien ändern.",
+      "should_trigger": true,
+      "why": "Pause und reale Wiederaufnahmemöglichkeiten müssen ohne stilles Reaktivieren erhalten bleiben.",
+      "checks": [
+        "Verneint einen selbsttätigen Hintergrundlauf allein durch die Notiz.",
+        "Reaktiviert die Begleitung nicht; keine ungefragten Verbesserungsvorschläge.",
+        "Verspricht keinen nicht geprüften Hook oder Termin."
+      ],
+      "seed": {
+        "files": {
+          "memory/MEMORY.md": "# Memory\n- [Begleitung](project-begleitung.md) — Status und Wiedereinstieg\n",
+          "memory/project-begleitung.md": "---\nname: project-begleitung\ndescription: Laufende Harness-Mentor-Begleitung\nmetadata:\n  type: project\n---\nStatus: pausiert auf Wunsch des Nutzers.\nBegleitgrad: auf Abruf.\nWiedereinstieg: nur durch erneute ausdrückliche Bitte um Fortsetzung.\n"
+        }
+      }
     }
   ]
 }

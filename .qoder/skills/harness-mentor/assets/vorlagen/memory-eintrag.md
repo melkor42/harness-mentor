@@ -13,6 +13,15 @@ metadata:
 
 Verknüpfungen zu anderen Einträgen als [[anderer-eintrag-name]].
 Jeder Eintrag gehört zu einer der drei Arten: dauerhafte Präferenz,
-veränderlicher Zustand (mit Umkehrbedingung), historisches Ereignis. -->
+veränderlicher Zustand (mit Umkehrbedingung), historisches Ereignis.
+
+Für eine gewünschte Begleitung (project) nur die benötigten Felder verwenden:
+- aktueller Status: aktiv | pausiert | aus, mit Quelle der Nutzerentscheidung
+- Begleitgrad: eng geführt | begleitend | auf Abruf (keine Handlungsfreigabe)
+- Wiedereinstieg: erneuter Nutzeraufruf oder konkret geprüfter Mechanismus
+- Beobachtungen: Signal mit Fundort, relevante Wiederholung und Ergebnis
+- offene Punkte und selbstständig gelungene Korrekturen
+Aktuellen Zustand aktualisieren; wichtige Gründe knapp erhalten. Keine Sitzungs-
+oder Schweigechronik. Names/Frontmatter an das tatsächliche native System anpassen. -->
 
 <Inhalt — so kurz wie möglich, so vollständig wie nötig.>

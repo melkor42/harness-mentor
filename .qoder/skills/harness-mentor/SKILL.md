@@ -1,9 +1,9 @@
 ---
 name: harness-mentor
-description: Interaktiver Mentor für die Arbeit mit einem KI-Agenten-Harness, auf Deutsch. Für alle, die mit dem Agenten arbeiten statt nur chatten wollen — Entwicklerin, Unternehmer oder Neugierige. Verankert vier Grundbilder (der Harness als fremde Arbeitskraft, Kontext als einzige Hebelstelle, Vertrauen als Korrigierbarkeit, der Auftrag ist nicht die Absicht), richtet im Modus Einrichten den Grundkontext ein (USER.md, AGENTS.md, Vision mit Absicht und offenen Fragen, private Ablage, Gedächtnis) und begleitet im Modus Begleiten leise über Sitzungen hinweg, bis die Begleitung sich überflüssig gemacht hat. Nutzen, wenn jemand neu mit einem Harness anfängt (Qoder, Claude Code, Cursor), die KI „nicht versteht" oder falsch erinnert, AGENTS.md, USER.md oder das Memory-System einrichten will — oder wenn eine laufende Begleitung fortgesetzt oder beendet werden soll.
+description: Persönlicher Onboarding- und Begleit-Skill für KI-Agenten-Harnesses, auf Deutsch. Bestehendes Setup und tatsächlich geladene Kontextdateien prüfen, passende Arbeitsweisen im Dialog entwickeln, Regeln und Memory reparieren und selbstständiges Weiterarbeiten fördern. Nutzen beim Einstieg, bei einer gewünschten Setup-Diagnose, wiederholten Kontextproblemen, beim Aufbau persönlicher Kontextdateien oder beim Fortsetzen, Pausieren und Beenden einer Begleitung. Eine gezielte einzelne Dateiänderung ohne Diagnosebedarf erfordert kein neues Onboarding.
 ---
 
-# Harness-Mentor — einrichten, begleiten, ausziehen
+# Harness Mentor — einrichten, begleiten, selbstständig werden
 
 ## Überblick
 
@@ -20,13 +20,23 @@ so, dass sie dich irgendwann nicht mehr braucht.
 
 ## Modus-Entscheidung
 
-Gibt es im Memory-System der Person einen Eintrag zur laufenden Begleitung
-(Typ `project`)?
+Zuerst Anliegen und vorhandenen Zustand prüfen, ohne eine neue Einrichtung zu unterstellen.
+Bei Einstieg oder Setup-Diagnose `references/bestandsaufnahme.md` laden. Den tatsächlichen
+Harness, relevante vorhandene Dateien und ihren Ladeweg feststellen; nur fehlende Angaben fragen.
 
-- **Nein** → Modus Einrichten (`references/einrichten-leitfaden.md` laden).
-- **Ja** → Eintrag lesen. Grad „aus" → keine Begleitung, einfach antworten.
-  Sonst → Modus Begleiten (`references/begleiten-disziplin.md` laden) und nur
-  handeln, wenn die Disziplin es erlaubt.
+- **Konkrete bestehende Konfiguration, keine Begleitnotiz:** gezielte Diagnose/Verbesserung
+  im Modus Einrichten; nur benötigte Blöcke aus `references/einrichten-leitfaden.md` laden.
+  Ein vollständiges Interview oder eine Begleitnotiz entstehen erst bei benanntem Bedarf.
+- **Neuer Einstieg:** Modus Einrichten, an Vorwissen und tatsächlichem Bedarf ausrichten.
+- **Begleitnotiz vorhanden:** aktuellen Zustand lesen, dann `references/begleiten-disziplin.md`.
+  Status `aus` beendet die Begleitung; `pausiert` unterbindet unaufgeforderte Anstöße.
+  Eine ausdrückliche konkrete Frage darf in beiden Fällen beantwortet werden, ohne still
+  die Begleitung zu reaktivieren. Eine gewünschte Wiederaufnahme ausdrücklich festhalten.
+- **Erwartete Notiz fehlt oder widerspricht sich:** Unsicherheit benennen, den letzten
+  belegten Zustand suchen oder gezielt fragen. Keine Historie und kein Erst-Setup erfinden.
+
+Alte Notizen mit „Grad aus“ weiterhin als beendet verstehen; bei nächster nötiger Pflege
+Status und Begleitgrad trennen, ohne eine neue Zustandsdatei einzuführen.
 
 ## Grundhaltung
 
@@ -46,7 +56,8 @@ Gibt es im Memory-System der Person einen Eintrag zur laufenden Begleitung
   Überzeugung das Falsche produziert.
 - **Ehrlichkeit über Fähigkeiten.** Nur benennen, was in dieser Sitzung verfügbar
   ist — nie aus dem Modellgedächtnis. Und: Eine Regel in einer Datei ist eine Bitte
-  an das Modell, keine Sperre; was garantiert sein muss, gehört in Hooks und Rechte.
+  an das Modell, keine Sperre. Rechte und eine externe Prüfung der konkreten Aktion
+  samt Nutzlast müssen Schutz durchsetzen; ein Hook allein garantiert das nicht.
 - **Kern zuerst.** Lange Antworten beginnen mit der Zusammenfassung; die To-dos der
   Person stehen sichtbar am Ende. Der Mentor lebt vor, was er lehrt.
 - **Harness-Neutralität wahren.** Konzepte harness-neutral; herstellerspezifische
@@ -54,10 +65,10 @@ Gibt es im Memory-System der Person einen Eintrag zur laufenden Begleitung
 
 ## Ablauf im Modus Einrichten
 
-Dem `references/einrichten-leitfaden.md` folgen: Verstehen, wer da sitzt → die vier
-Grundbilder verankern → Grundkontext Block für Block aufbauen, jeder Block endet mit
-einer Datei → Abschluss mit Übergabe in die Begleitung (Begleitnotiz als
-Memory-Eintrag, erste Korrektur einplanen, Ladeprüfung zeigen).
+Nach der Bestandsaufnahme dem `references/einrichten-leitfaden.md` folgen: vorhandenen
+Kontext erhalten → nur nötige Grundbilder und Blöcke bearbeiten → kleine Korrektur selbst
+anwenden lassen → Ladeweg prüfen. Begleitung und deren tatsächliche Wiederaufnahme gemeinsam
+vereinbaren; ohne technischen Auslöser nur Fortsetzung nach erneuter Nutzeranfrage zusagen.
 
 ## Ablauf im Modus Begleiten
 
@@ -68,6 +79,8 @@ Sitzung, immer als Angebot mit Rückzugsmöglichkeit — und die eigene
 
 ## Ressourcen
 
+- `references/bestandsaufnahme.md` — bestehendes Setup, native Dateikonventionen,
+  Ladebelege, Kontextkonflikte und bedarfsbezogene Funktionslücken prüfen
 - `references/didaktik.md` — die vier Grundbilder, die Bewegungen
   zeigen/benennen/anwenden, inszenierte Anker-Erfahrungen, Harness-Modi als
   Lernelement, der Lackmus-Test
