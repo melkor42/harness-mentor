@@ -314,3 +314,209 @@ Schublade.
 **Zusatz (Manuel, 2026-10-12):** Der Planungsmodus und die Intention des Planens im Vergleich zum Chat
 war selbst eine Lernhürde — aufgenommen als Lernelement „Harness-Modi" in
 `.qoder/skills/harness-mentor/references/didaktik.md`.
+
+## 2026-10-24 — Absicht vor Auftrag: Intent-Driven Creation im Mentor verankert
+
+**Entscheidung (Manuel, 2026-10-24):** Die Ideen aus *Die Architektur der Intention* fließen in den
+aktuellen Skill `harness-mentor` ein — nicht als Essay-Logik, sondern als vierte Grundhaltung: Der
+Agent fragt nach der Absicht hinter einem Auftrag, sucht das große Ganze und nutzt vorhandenes Wissen,
+Entscheidungen und verworfene Wege als Hintergrund. Absicht und Auftrag bleiben unterscheidbar;
+Festlegungen und Vermutungen auch. Umsetzung: viertes Grundbild, Block 2 des Einrichten-Leitfadens
+(Absicht und Ziel), VISION- und AGENTS-Vorlage, Abschluss-Gegenprobe.
+
+**Grund:** In einem unbekannten Frontier-Umfeld ist die Umsetzung billig geworden; der Engpass ist die
+Wahl der richtigen Richtung. Ein Harness, der nur Aufträge ausführt, optimiert das Falsche mit großer
+Sicherheit — je schneller, desto teurer. Quelle: Manuels Essay
+`C:\Users\ASUS GAMING\OneDrive\Delta Weave\paper\Die_Architektur_der_Intention.md`, Stand
+2026-10-23; Idee im Chat vorgetragen am 2026-10-24.
+
+**Grenze:** Keine Übernahme der vollständigen Essay-Argumentation (Zeitdimension, Anreizsysteme,
+Computerarchitektur). Der Skill bleibt ein Einstiegs-Guide; die Vertiefung gehört in den Essay, nicht
+in den Grundkontext. v1 (`company-harness`) bleibt Artefakt und wird nicht nachgezogen.
+
+## 2026-10-24 — Evals für harness-mentor: Baseline, Trigger-Konkurrenz, kontaminierte Ablation
+
+**Entscheidung (Manuel, 2026-10-24):** `harness-mentor` bekommt eine schmale Evalschicht unter
+`evals/` — kein Unit-Testing um des Testens willen, gemessen wird nur, was das Verhalten ändert:
+Trigger (feuert der Skill im richtigen Moment, nicht bei jedem Coding-Task), Kontinuität (bleibt die
+Begleitung nach Wochen aktiv), verfrühte Harness-Artefakte. 14 Fälle (P1–P8 positiv, N1–N6 negativ),
+stdlib-Runner, frischer Workspace je Lauf, Rohspuren als NDJSON, Bericht als Markdown und JSON.
+Läufe je Fall 2–3 wegen Modellstreuung; Baseline mit Skill-Hash eingefroren.
+
+**Ergebnis Baseline:** 35 Läufe, Trigger 34/35 (21/22 positiv, 13/13 negativ), Auto-Modus 34/35,
+18,48 Credits. Einziger Fehlschlag: P3, in allen drei Baseline-Läufen lud zuerst `writing-for-agents`,
+`harness-mentor` in 2/3. Varianzläufe (P3 und N3 je 3): P3 3/3, N3 3/3, 3,02 Credits; kombiniert P3
+5/6, gesamt 40/41 (97,6 %). Gültige Messung: 25,65 Credits. Kontinuität trägt: P5/P6 lesen die
+Workspace-`memory/`, P7 setzt den Grad auf „aus", P8 benennt die fehlende Notiz statt Historie zu
+erfinden. P1–P4 und alle Negativfälle legen keine Harness-Artefakte an. Bericht:
+`evals/results/2026-10-24-baseline.md`, `…-variance.md`.
+
+**Ablation:** 10 Läufe, 4,15 Credits — als Aussage unbrauchbar. Ohne kopierten Skill konnte das
+Modell die echten Skill-Dateien per Pfad lesen (P2 Lauf 2, P3 Lauf 1, P4 2/2, P5 2/2; sauber nur P1,
+P2 Lauf 1, P3 Lauf 2). Der Test prüft „Skill nicht geladen", nicht „Skill unerreichbar". Ergebnis
+dokumentiert in `evals/results/2026-10-24-ablation.md`; keine Kürzung des Skill-Textes darauf gestützt.
+
+**Behobene Runner-Fehler:** cp1252-Spuren (zeilenweise UTF-8/cp1252 dekodieren, danach UTF-8
+normalisieren); `--permission-mode dont_ask` blockiert alle Schreibzugriffe (→ `accept_edits`);
+`cwd` auf Repo-Wurzel ließ die echte `AGENTS.md` durchsickern (→ Workspace als cwd). Verworfene
+Baselines (17,23 und 19,27 Credits) sind keine Ergebnisse und stehen nicht in den Berichten.
+
+**Grenzen:** Der Workspace liegt im Repo — das Modell kann die Repo-`AGENTS.md` per Pfad lesen; das
+beeinflusst Antwortinhalte, nicht die Trigger-Entscheidung (N3 6/6). P5s Seed behauptet USER.md,
+AGENTS.md und `private/`, legt aber nur `memory/` an — P5 Lauf 3 fragte korrekt nach. P7 prüft grob
+auf „aus" (trifft auch „Pause"); maßgeblich ist die Sichtprüfung. Rohspuren enthalten Umgebung
+(globale Memory-Dateinamen, Pfade); das Repo ist öffentlich — Veröffentlichung von `evals/results/`
+entscheidet Manuel. Kontinuität ist über geseedete Notizen simuliert, nicht über echte Wochen.
+
+**Anwendung:** Baseline eingefroren (Skill-Hash
+`99a043a4cad8af773d0aded0d3b02dc193a06f0524afbdb5c67d6c69a4d47b9e`). Jede Änderung an `SKILL.md`
+läuft mindestens gegen P3 und den geänderten Fall; keine unbewerteten Kürzungen. Ablation erst nach
+sauberem Aufbau (Workspace außerhalb des Repos oder isolierte Konfiguration).
+
+**Nächster Schritt:** (1) P3-Beschreibung annehmen oder schärfen (Konkurrenz zu `writing-for-agents`),
+(2) saubere Ablation, (3) P5-Seed vervollständigen, (4) echter Retention-Check über Wochen,
+(5) Veröffentlichung der Evals entscheiden. Hub nicht nachgezogen — der Produktumfang ist unverändert,
+die Evalschicht ist Prüfung, kein Produktbestandteil.
+
+
+## 2026-10-25 — Harness Mentor bleibt; Namensangleichung und Funktionsabgleich
+
+**Entscheidung von Manuel:** Der zunächst gewünschte Name Set Me Up ist ersetzt durch
+**Harness Mentor**. Der vorhandene aktuelle Skill und sein technischer Name `harness-mentor`
+bleiben erhalten. Ziel ist persönliches Onboarding und zurückhaltende Begleitung bis zur
+Eigenständigkeit. Funktionale Erweiterungen sind nur zu analysieren und vorzuschlagen.
+Quelle: Auftrag und anschließende Namenskorrektur im aktuellen Chat, Stand 2026-10-25.
+
+**Durchgeführt:** GitHub-Repository nach `melkor42/harness-mentor` umbenannt; Admin-Recht,
+neuer Name und Weiterleitung der alten Adresse über GitHub CLI/API geprüft. Lokales `origin`
+aktualisiert. Aktuelle Titel, Repository-README, Website-Texte und Links in beiden Sprachen
+angeglichen. Hub-Knoten nach `projects/harness-mentor.md` verschoben und MAP, Projektregister,
+Querverweise, aktuelle Regel und Freigabeliste aktualisiert. Der Hub liegt auf diesem Rechner
+unter `C:/Users/ASUS GAMING/OneDrive/Delta Weave`. Historische Quellen, ältere Entscheidungseinträge,
+Eval-Berichte und der als Vorgänger dokumentierte `company-harness`-Skill bleiben als damaliger
+Bestand erhalten. Keine Funktionsänderung am aktuellen Skill vorgenommen.
+Quelle: lokale Dateiprüfung, GitHub-CLI/API und Hub-Linkprüfung dieser Sitzung, Stand 2026-10-25.
+
+**Bild:** Auf Manuels Rückmeldung ein neues Thumbnail passend zum Skill und zur bestehenden
+Galerie-Bildsprache erzeugt, statt das verworfene Set-Me-Up-Motiv einzubauen. Im Website-Repo:
+`assets/exhibits/harness-mentor.png` als Master und `harness-mentor.webp` für die Galerie.
+Werkzeug: integriertes Imagegen; Motiv: offenes Tor, goldener Weg in die Eigenständigkeit,
+Kontext-/Profil-/Orientierungssymbole, dunkles Blau und Gold. Der vollständige Prompt liegt
+lokal unter `.scratch/thumbnail-prompt.txt`. Quelle: Manuels Bildauftrag und Imagegen-Ausgabe
+in dieser Sitzung, Stand 2026-10-25.
+
+**Analyse:** `docs/product-plan.md`, Abschnitt „Funktionsabgleich und Änderungsplan“ ist die
+zuständige Stelle. Kernintention bereits vorhanden; prioritäre Lücken sind Bestandsdiagnose,
+tatsächliche Dateikonventionen/Ladebelege, korrekte Sicherheitsgrenzen und verlässliche,
+nutzergesteuerte Wiederaufnahme. Die bestehende Architektur bleibt vorgeschlagenes Fundament.
+Quelle: statischer Abgleich von Skill, Referenzen, Vorlagen und vorhandenen Evals, Stand 2026-10-25.
+
+**Prüfung:** Skill-Validator erfolgreich; Eval-Fallliste unverändert ausführbar. Website-Build
+und vorhandene Website-Tests erfolgreich; Hub-Prüfung erfolgreich. Desktop-Galerie und
+Detaildialog im lokalen Browser kontrolliert, mobiler Text und Links ebenfalls sichtbar.
+Impeccable-Detektor ohne Befund, aber nur Regex-Fallback; keine vollständige Kontrastprüfung.
+Kein neuer verhaltensbezogener oder langfristiger Skill-Test durchgeführt.
+Quelle: lokale Tool-Ausgaben und Browserprüfung dieser Sitzung, Stand 2026-10-25.
+
+### Konkrete offene Handgriffe
+
+- **Workspace-Ordner koordiniert umstellen:** Nach Ende laufender Chats/Prozesse
+  `C:/Users/ASUS GAMING/Documents/Company-Harness` in
+  `C:/Users/ASUS GAMING/Documents/Harness-Mentor` umbenennen. Projekt in Codex/Qoder am neuen
+  Ort öffnen, workspacegebundene Memory-Zuordnung prüfen und aktuellen Arbeitsort im Hub
+  (`projects/harness-mentor.md`, `infra/weitere-workspaces.md`, `MAP.md`, `decisions/rules.md`)
+  nachziehen. Danach Git-Remote und Skill-Erkennung prüfen. Kein automatischer Umzug während
+  dieses aktiven Chats und keine Junction als Ersatzlösung.
+- **Veröffentlichung abstimmen:** Website und Skill-Dokumentation liegen lokal; noch kein Push
+  und kein Website-Deploy. Bereits vor dieser Aufgabe vorhandene Änderungen in denselben Repos
+  getrennt prüfen. Die Veröffentlichung der lokalen Eval-Ergebnisse bleibt eine eigene offene
+  Entscheidung; sie nicht versehentlich mit veröffentlichen. Anschließend freigegebene Änderungen
+  committen/pushen und beide Live-Sprachfassungen samt Bild und GitHub-Link prüfen.
+- **Ältere Architektur-PNG erneuern:** `docs/architecture/harness-mentor-essenz.html` trägt den
+  aktuellen Namen; die bestehende PNG ist noch der frühere Render. Vor Veröffentlichung der
+  Architekturansicht nach der Anleitung in `docs/architecture/README.md` neu rendern und prüfen.
+- **Andere Rechner und externe Verzeichnisse:** Nicht erreichbare Arbeitskopien, Bookmarks und
+  installierte Vorgängerversionen auf alte Repo-/Workspace-Adressen prüfen. GitHub-Weiterleitung
+  ist verifiziert, eine globale Prüfung aller Geräte ist nicht erfolgt. Die aktuelle lokale
+  Skill-ID bleibt unverändert; dafür ist keine neue Installation nötig.
+- **Änderungsplan entscheiden:** Nur die gewünschten funktionalen Punkte freigeben, anschließend
+  gezielt gegen die betroffenen Szenarien testen. Bis dahin bleibt das Verhalten unverändert.
+
+Quelle für Status und Pfade: lokale Bestandsaufnahme und Ausführung dieser Sitzung;
+Veröffentlichungsgrenze zusätzlich `evals/README.md`, Stand 2026-10-25.
+
+
+**Abschlussnachtrag:** Die Namenspflege im Hub ist lokal als Commit `53d0008` gesichert;
+andere vorgefundene Änderungen sind nicht enthalten. Aktuelle README-Linkziele und die
+geänderten Diff-Abschnitte sind geprüft. Die alte Architektur-PNG bleibt offen, weil die
+Browser-Sicherheitsrichtlinie das Öffnen der lokalen HTML-Datei zum Rendern abgelehnt hat;
+kein Umgehungsversuch. Quelle: Git-/Linkprüfung und Browser-Toolausgabe, Stand 2026-10-25.
+
+
+## 2026-10-25 — Abschlussprüfung und lokale Commits des Gesamtstands
+
+**Auftrag:** Manuel verlangt den Abschluss einschließlich der vorgefundenen Änderungen anderer,
+Qualitätsprüfung und Bericht; „quitten“ wurde ausdrücklich zu „committen“ korrigiert. Funktionale
+Erweiterungen aus dem Gap-Plan bleiben Vorschläge. Quelle: aktueller Chat, Stand 2026-10-25.
+
+**Übernommene Vorarbeiten:** Das vierte Grundbild „Auftrag ist nicht Absicht“ ist konsistent in
+Skill-Beschreibung, Didaktik, Einrichten-Leitfaden, AGENTS-/VISION-Vorlagen und Produktplan
+verankert. Diese Änderungen waren bereits vor der Namensaufgabe vorhanden; die Aussage „keine
+Funktionsänderung“ in deren Eintrag bezeichnet nur die damalige Namenspflege, nicht den gesamten
+jetzt gesicherten Diff gegenüber HEAD. Eval-Runner, synthetische Fälle, Handoff und
+Architekturansicht wurden mitgeprüft und lokal gesichert. Quelle: Git-Diff und Dateiprüfung,
+Stand 2026-10-25.
+
+**Website fertiggestellt:** Harness Mentor und Delta Profile haben eigene Galerie-Einträge,
+Bilder, deutsche/englische Detailtexte und jeweils ihren Repository-Link. Die bisherigen
+Mentor-Anker `skills-h` und `skills-story` bleiben erreichbar; Delta Profile hat eigene Anker.
+Die Mentor-Bildvariante zeigt Begleitung am Tor und eigenständiges Weitergehen. Die bereits
+vorhandenen Änderungen der anderen an Essay-Titel, Ausgabenbezeichnung und Harness-Erklärung
+sind übernommen. Das gelieferte deutsche Essay-Bild ist im deutschen Teaser und auf der
+Essay-Seite eingebunden. Überholte Bildentwürfe sind lokal unter
+`../Delta-Weave/.scratch/asset-drafts/` erhalten. Quelle: Website-Dateien und Browserprüfung,
+Stand 2026-10-25.
+
+**Qualitätskorrekturen:** Dokumentation des früher gemeinsamen Skill-Eintrags aktualisiert;
+widersprüchlichen Vorrang im Sign-Off beseitigt. Die Galerie korrigiert nun das automatische
+horizontale Scrollen ihres verdeckten Containers bei Fragmentnavigation. Versionierte CSS-/JS-URLs
+verhindern die Mischung von neuen HTML-Inhalten mit alten Styles oder alter Galerie-Logik.
+Der bestehende Runtime-Test prüft weiter die tatsächlichen Skriptpfade und akzeptiert deren
+Versionsparameter. Quelle: `../Delta-Weave/js/main.js`, HTML-/CSS-Dateien,
+`../Delta-Weave/tests/learning.test.mjs`, Browserbefund, Stand 2026-10-25.
+
+**Prüfergebnis:** Website-Build und alle vorhandenen Website-Tests erfolgreich. Beide Skill-
+Detaildialoge, direkte Galerie-Anker, Bildladung, englische Repository-Zuordnung und mobile
+Darstellung ohne horizontalen Seitenüberlauf im Browser geprüft. Die vollständigen Mentor- und
+Delta-Profile-Bilder bleiben sichtbar. Skill-Validator und Python-Syntaxprüfung erfolgreich.
+Der mechanische Design-Check fand im Regex-Fallback nichts; eine vollständige automatische
+Kontrastanalyse ist damit nicht belegt. Quellen: lokale Prüfprotokolle unter `.scratch/`,
+Website-Tests und Screenshots `.scratch/final-mentor-desktop.png`,
+`.scratch/final-delta-profile-desktop.png`, `.scratch/final-mentor-mobile.png`, Stand 2026-10-25.
+
+**Verhaltensprüfung mit Grenze:** Der erste P3/N3-Versuch konnte wegen Sandbox-EPERM nicht
+starten und ist kein Verhaltensbefund. Im freigegebenen Wiederholungslauf erkannte P3 den Skill,
+überschritt jedoch das Zeitlimit; N3 beendete sich ohne unerwünschten Trigger und bestand die
+automatischen Checks. Daraus wird kein vollständig bestandener positiver End-to-End-Test und
+keine neue Aussage zur Langzeitwirkung abgeleitet. Quelle:
+`evals/results/2026-10-25-final-review-authorized.md` und zugehörige JSON/Rohspuren (lokal),
+Stand 2026-10-25.
+
+**Commit-Grenze:** Die geprüften Quellen werden in getrennten lokalen Repository-Commits gesichert.
+`evals/results/`, lokale `.runs/`, Sandboxes und `.scratch/` bleiben gitignoriert. Die Rohspuren
+werden erhalten; keine unbewertete Veröffentlichung. Kein Push und kein Deploy gehören zu diesem
+Abschluss. Quelle: Manuels Commit-Auftrag, bestehende Veröffentlichungsentscheidung und `.gitignore`,
+Stand 2026-10-25.
+
+**Offen nach dem Commit:** Freigabe und Umsetzung des priorisierten funktionalen Änderungsplans;
+belastbarer positiver Verhaltenslauf sowie echte Nutzungs-/Retention-Prüfung; gesonderte Freigabe
+von Eval-Ausgaben und Veröffentlichung der Quellen; koordinierter Workspace-Umzug. Der ältere
+Architektur-PNG-Render ist ausdrücklich als veraltet gekennzeichnet und vor externer Verwendung
+neu zu erzeugen; seine aktuelle HTML-Quelle ist maßgeblich. Diese offenen Produkt- und
+Veröffentlichungsschritte verhindern die lokale Sicherung des geprüften Arbeitsstands nicht.
+Quelle: `docs/product-plan.md`, Architektur-README und diese Abschlussprüfung, Stand 2026-10-25.
+
+
+**Commit-Nachweis Website:** `6ddbcde` — „Separate skill exhibits and finish Harness Mentor
+presentation“. Website-Arbeitsverzeichnis nach Commit sauber; kein Push. Der eigene
+Harness-Mentor-Commit enthält diesen Bericht. Quelle: lokale Git-Prüfung, Stand 2026-10-25.

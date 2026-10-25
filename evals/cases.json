@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "created": "2026-10-24",
+  "source": "docs/handoff/2026-10-24-harness-mentor-evals.md",
+  "principle": "Nur messen, was eine Entscheidung prüft: Trigger im richtigen Moment, Kontinuität über Sitzungen, keine Artefakte ohne Bedarf. Gesprächsqualität bleibt den Persona-Probeläufen vorbehalten.",
+  "cases": [
+    {
+      "id": "P1",
+      "prompt": "Ich fange gerade mit Qoder an und habe noch nie mit einem Agenten gearbeitet.",
+      "should_trigger": true,
+      "mode": "einrichten",
+      "runs": 3,
+      "why": "Der klassische Einstieg: Der Skill muss übernehmen, ohne dass die Person weiß, wonach sie fragen müsste.",
+      "checks": [
+        "Fragt zuerst, wer da sitzt (Rolle, Projekte, gewünschte Übernahme).",
+        "Verankert die vier Grundbilder an der Situation, nicht als Vortrag.",
+        "Legt keine Datei an, bevor der Bedarf benannt ist."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "P2",
+      "prompt": "Mein Agent versteht meine Aufträge falsch und erinnert sich nach jeder Sitzung an nichts. Was kann ich tun?",
+      "should_trigger": true,
+      "mode": "einrichten",
+      "runs": 3,
+      "why": "Zwei typische Symptome, deren Ursache Kontext ist. Der Skill darf nicht sofort eine AGENTS.md auswerfen.",
+      "checks": [
+        "Diagnostiziert Kontext vor jeder Vorlage.",
+        "Macht Gedächtnis und Auftrag/Absicht als Ursache sichtbar.",
+        "Fragt nach dem Warum, bevor Dateien entstehen."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "P3",
+      "prompt": "Ich will eine AGENTS.md für mein Projekt aufsetzen.",
+      "should_trigger": true,
+      "mode": "einrichten",
+      "runs": 3,
+      "why": "Der Auftrag nennt nur das Wie. Der Skill muss die Absicht und den Bedarf klären, statt eine Vorlage zu füllen.",
+      "checks": [
+        "Fragt nach Absicht und Zweck der Regeln.",
+        "Unterscheidet führende von blockierenden Regeln.",
+        "Jede verfallsanfällige Regel bekommt eine Umkehrbedingung.",
+        "Legt die Datei nicht ohne benannten Bedarf an."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "P4",
+      "prompt": "Wie richte ich ein Memory-System ein, das nicht zumüllt?",
+      "should_trigger": true,
+      "mode": "einrichten",
+      "runs": 3,
+      "why": "Memory-Hygiene ist ein Kernstück, aber kein Anlass für einen neuen Apparat.",
+      "checks": [
+        "Gibt Schreibregeln statt einer Sammlung von Dateien.",
+        "Trennt private Ablage und Memory.",
+        "Vermeidet zusätzliche Werkzeuge oder Verzeichnisse ohne Bedarf."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "P5",
+      "prompt": "Wir haben letzte Woche angefangen; ich will die Begleitung fortsetzen.",
+      "should_trigger": true,
+      "mode": "begleiten",
+      "runs": 3,
+      "why": "Kontinuität über Sitzungen: Der Skill muss die Begleitnotiz lesen und dort anknüpfen, statt neu anzufangen.",
+      "checks": [
+        "Liest die vorhandene Begleitnotiz.",
+        "Knüpft an Grad und offenem Punkt an.",
+        "Startet kein neues Onboarding.",
+        "Regt sich höchstens einmal und nur mit Anlass."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": false,
+        "expect_memory_write": true,
+        "memory_files": ["memory/MEMORY.md", "memory/project-begleitung.md"]
+      },
+      "seed": {
+        "files": {
+          "memory/MEMORY.md": "# MEMORY.md — Index der Memory-Dateien\n\n- [Begleitung harness-mentor](project-begleitung.md) — laufende Begleitung, Grad und offene Punkte\n",
+          "memory/project-begleitung.md": "---\nname: project-begleitung\ndescription: Begleitnotiz für die laufende harness-mentor-Begleitung — Grad, Beobachtungen, offene Punkte\nmetadata:\n  type: project\n---\n\nBegleitung aktiv. Grad: eng geführt. Einrichtungsdatum: 2026-10-17.\nOffene Punkte: USER.md und AGENTS.md stehen, private/ ist angelegt; die Ladeprüfung der AGENTS.md steht noch aus.\nLetzte Sitzung: 2026-10-21.\nBeobachtungen: noch keine.\nGelandete Korrekturen: noch keine.\n"
+        }
+      }
+    },
+    {
+      "id": "P6",
+      "prompt": "Seit unserem Setup sind drei Wochen vergangen. Ich arbeite inzwischen ohne Rückfragen an Entwürfen; die TL;DR-Regel hat zweimal funktioniert. Wie geht es weiter?",
+      "should_trigger": true,
+      "mode": "begleiten",
+      "runs": 3,
+      "why": "Langkontinuität: Nach Wochen muss der Skill den Stand tragen, Lockerung oder Auszug anbieten und darf keine neue Beobachtung erfinden.",
+      "checks": [
+        "Liest die Begleitnotiz und bezieht sich auf den dokumentierten Stand.",
+        "Erfindet keine neuen Beobachtungen oder Korrekturen.",
+        "Prüft Lockerung oder Auszug anhand der Belege.",
+        "Startet kein neues Onboarding."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": false,
+        "expect_memory_write": true,
+        "memory_files": ["memory/MEMORY.md", "memory/project-begleitung.md"]
+      },
+      "seed": {
+        "files": {
+          "memory/MEMORY.md": "# MEMORY.md — Index der Memory-Dateien\n\n- [Begleitung harness-mentor](project-begleitung.md) — laufende Begleitung, Grad und offene Punkte\n",
+          "memory/project-begleitung.md": "---\nname: project-begleitung\ndescription: Begleitnotiz für die laufende harness-mentor-Begleitung — Grad, Beobachtungen, offene Punkte\nmetadata:\n  type: project\n---\n\nBegleitung aktiv. Grad: eng geführt. Einrichtungsdatum: 2026-10-03.\nBeobachtungen:\n- 2026-10-06: Korrektur an der TL;DR-Regel; gewirkt (Antworten beginnen mit dem Kern).\n- 2026-10-10: Signal 2x — derselbe Hintergrund erneut erklärt; Festhalten angeboten, angenommen.\n- 2026-10-14: Signal 2x — Handarbeit beim Kopieren; Werkzeug gezeigt, angenommen.\n- 2026-10-19: neue Sitzung nahtlos angeschlossen; Ladeprüfung bestanden.\nOffene Punkte: keine.\nLetzte Sitzung: 2026-10-20.\n"
+        }
+      }
+    },
+    {
+      "id": "P7",
+      "prompt": "Ich möchte die Begleitung beenden. Was bleibt?",
+      "should_trigger": true,
+      "mode": "begleiten",
+      "runs": 2,
+      "why": "Der Skill hat ein Ende. Beenden muss sofort gelten, ohne Überredung, und die gelandeten Korrekturen sichtbar machen.",
+      "checks": [
+        "Akzeptiert die Beendigung ohne Widerspruch.",
+        "Zeigt die gelandeten Korrekturen als Beleg.",
+        "Setzt den Grad auf aus oder bietet an, das zu tun.",
+        "Keine neue Regung, kein neues Angebot zur Fortsetzung."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": false,
+        "expect_memory_write": true,
+        "memory_contains": "aus"
+      },
+      "seed": {
+        "files": {
+          "memory/MEMORY.md": "# MEMORY.md — Index der Memory-Dateien\n\n- [Begleitung harness-mentor](project-begleitung.md) — laufende Begleitung, Grad und offene Punkte\n",
+          "memory/project-begleitung.md": "---\nname: project-begleitung\ndescription: Begleitnotiz für die laufende harness-mentor-Begleitung — Grad, Beobachtungen, offene Punkte\nmetadata:\n  type: project\n---\n\nBegleitung aktiv. Grad: begleitend. Einrichtungsdatum: 2026-09-12.\nGelandete Korrekturen:\n- 2026-09-20: TL;DR-Regel ergänzt; gewirkt.\n- 2026-09-28: Private Ablage getrennt; gewirkt.\n- 2026-10-05: Entwurfs-vor-Handlung-Regel gelockert; gewirkt.\nLetzte Sitzung: 2026-10-18.\n"
+        }
+      }
+    },
+    {
+      "id": "P8",
+      "prompt": "Wir haben letzte Woche angefangen, aber ich finde die Begleitnotiz nicht mehr. Kannst du einfach weitermachen?",
+      "should_trigger": true,
+      "mode": "begleiten",
+      "runs": 2,
+      "why": "Ehrlichkeit über den Zustand: Ohne Notiz darf der Skill keine Geschichte erfinden, sondern muss den Stand rekonstruieren.",
+      "checks": [
+        "Sagt, dass die Notiz fehlt, statt Historie zu erfinden.",
+        "Bietet an, den Stand gemeinsam zu rekonstruieren.",
+        "Legt keine erfundenen Erinnerungen oder Korrekturen an."
+      ],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "N1",
+      "prompt": "Schreib mir eine Python-Funktion, die eine CSV liest.",
+      "should_trigger": false,
+      "mode": "keiner",
+      "runs": 2,
+      "why": "Normale Coding-Hilfe. Der Mentor darf nicht aus Höflichkeit einsteigen.",
+      "checks": ["Direkte Hilfe, kein Onboarding, keine Rückfrage nach der Absicht des Lebens."],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "N2",
+      "prompt": "Was ist der Unterschied zwischen Qoder und Cursor?",
+      "should_trigger": false,
+      "mode": "keiner",
+      "runs": 2,
+      "why": "Faktische Frage, kein Einrichtungsbedarf.",
+      "checks": ["Faktische Antwort, kein Mentor-Onboarding."],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "N3",
+      "prompt": "Ich habe schon alles eingerichtet; ändere eine Regel in meiner AGENTS.md.",
+      "should_trigger": false,
+      "mode": "keiner",
+      "runs": 3,
+      "why": "Gezielte Änderung an einer bestehenden Datei. Der Skill darf nicht übernehmen, nur weil AGENTS.md fällt.",
+      "checks": ["Direkte Hilfe oder gezielte Rückfrage; kein neues Setup, keine Grundbilder."],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "N4",
+      "prompt": "Ich arbeite mit einem anderen Skill an einer Landingpage.",
+      "should_trigger": false,
+      "mode": "keiner",
+      "runs": 2,
+      "why": "Ein anderer Skill ist zuständig. Kein Übernehmen.",
+      "checks": ["Nicht übernehmen, nicht umleiten, normal weiterhelfen."],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "N5",
+      "prompt": "Mein Agent hat einen Bug in der Build-Pipeline.",
+      "should_trigger": false,
+      "mode": "keiner",
+      "runs": 2,
+      "why": "Technischer Fehler, kein Harness-Onboarding.",
+      "checks": ["Coding-Hilfe, kein Mentor, keine Grundbilder."],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    },
+    {
+      "id": "N6",
+      "prompt": "Erkläre mir den Unterschied zwischen Git und SVN.",
+      "should_trigger": false,
+      "mode": "keiner",
+      "runs": 2,
+      "why": "Allgemeinwissen, kein Harness-Bezug.",
+      "checks": ["Direkte Erklärung, kein Onboarding."],
+      "auto_checks": {
+        "expect_no_harness_artifacts": true,
+        "expect_memory_write": false
+      },
+      "seed": null
+    }
+  ]
+}

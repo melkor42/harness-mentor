@@ -11,15 +11,23 @@
 
 ## Lies in dieser Reihenfolge
 
-<!-- 1. <Einstiegsdokument> — Stand und was gilt.
-     2. <Fachdokument> — nur wenn das Thema drankommt. -->
+<!-- 1. docs/VISION.md — Absicht, offene Fragen, Stand.
+     2. <Entscheidungen/Fachdokument> — was gilt und warum. -->
+
+## Auftrag und Absicht
+
+<!-- Die Absicht steht in der Vision: was gilt — und was Vermutung ist. Vor einer
+     größeren Aufgabe dort nachlesen, nicht aus dem Auftrag raten. -->
+- Beginne beim Warum: Wenn ein Auftrag nur das Wie nennt, frag nach der
+  Absicht — was soll sich für wen ändern —, bevor du umsetzt.
 
 ## Harte Regeln
 
 <!-- Die erste Regel steht schon fest — die Voreinstellung aus dem Setup:
      „eng führen (seit <Einrichtungsdatum>): Entwürfe vorlegen, vor Handlungen
-     mit Außenwirkung fragen." Jede spätere Lockerung wird als eigene datierte
-     Regel darunter angehängt, nie überschrieben.
+     mit Außenwirkung fragen." Die Absichts-Regel steht oben unter „Auftrag und
+     Absicht". Jede spätere Lockerung wird als eigene datierte Regel darunter
+     angehängt, nie überschrieben.
 
      Muster einer führenden Regel (verbessert jede Antwort, sperrt keinen Weg):
      „Lange Ergebnisse: Kern in wenigen Sätzen zuerst, meine To-dos sichtbar
@@ -29,4 +37,6 @@
 
 ## Pflegen
 
-<!-- Wohin kommen neue Fakten? Wohin Entscheidungen? Was wird nie gespeichert? -->
+<!-- Neue Fakten: <Datei>. Entscheidungen: <Datei> — mit Datum, Grund und
+     verworfener Alternative. Nie gespeichert: Credentials, Tageszustand,
+     private Inhalte. -->

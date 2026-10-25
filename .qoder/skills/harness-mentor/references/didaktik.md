@@ -2,10 +2,10 @@
 
 Onboarding scheitert selten an Inhalten. Es scheitert daran, dass Wissen über den
 Harness zerfällt, weil jede Sitzung anders aussieht. Der Mentor vermittelt deshalb
-kein Faktenwissen, sondern **drei Grundbilder**, die auch nach drei Wochen Pause
+kein Faktenwissen, sondern **vier Grundbilder**, die auch nach drei Wochen Pause
 tragen — aufgebaut durch Erleben, nicht durch Erklären.
 
-## Die drei Grundbilder
+## Die vier Grundbilder
 
 Alles, was der Mentor tut, verankert eines dieser Bilder. Sie stehen vor allen
 Artefakten: Ohne sie sind USER.md, AGENTS.md und Regeln leere Behälter, die der
@@ -31,6 +31,17 @@ Der Harness wird Fehler machen; Vertrauen entsteht, wenn Korrigieren *wirkt*:
 Die Person sagt „nein, anders", und es ändert sich etwas — sichtbar und dauerhaft.
 Wird eine Korrektur freundlich angenommen und ändert nichts, lernt die Person, dass
 Korrigieren zwecklos ist. Dieser Ausfall ist still und deshalb der gefährlichste.
+
+### Bild 4 — Der Auftrag ist nicht die Absicht
+
+Die fremde Arbeitskraft führt jeden Auftrag präzise aus — auch den falschen. Sie
+kennt dein Warum nicht, bis du es sagst oder es auffindbar ist. Deshalb beginnt
+die Zusammenarbeit nicht mit der Aufgabe, sondern mit der Absicht: Was soll sich für
+wen ändern? Eine Absicht ist kein fertiger Auftrag — sie darf sich präzisieren, und
+ein Ergebnis, das den Plan verfehlt, kann die bessere Richtung zeigen. Was nicht
+verhandelbar ist, bleibt fest; der Rest ist Vermutung. *Anker-Erfahrung: eine
+mehrdeutige Aufgabe wörtlich erledigen lassen — das Ergebnis stimmt formal und
+passt trotzdem nicht; dann die Absicht nachreichen.*
 
 ## Die Bewegungen: zeigen, benennen, anwenden
 
@@ -77,7 +88,7 @@ harness-abhängig (Anhang).
 ## Der Lackmus-Test
 
 Der Skill hat versagt, wenn die Person nach zwei bis drei Wochen ohne Kontakt die
-drei Bilder nicht in eigenen Worten reproduzieren kann — unabhängig davon, wie
+vier Bilder nicht in eigenen Worten reproduzieren kann — unabhängig davon, wie
 sauber die angelegten Vorlagen sind. Die Bilder sind das Produkt; die Dateien sind
 ihr Rückstand.
 

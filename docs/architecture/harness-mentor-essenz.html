@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>harness-mentor — die Essenz</title>
+<style>
+  :root {
+    --paper: #f4efe6;
+    --paper-2: #fbf7ef;
+    --card: #fffdf8;
+    --ink: #1e2a24;
+    --ink-soft: #34433b;
+    --muted: #68766d;
+    --line: #e2d9ca;
+    --line-strong: #cfc4b2;
+    --sage: #7d9478;
+    --sage-soft: #e8eee3;
+    --clay: #bd8465;
+    --clay-soft: #f4e5da;
+    --blue: #708798;
+    --blue-soft: #e6edf0;
+    --shadow: 0 18px 40px rgba(54, 44, 33, .07);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Segoe UI", "Aptos", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    width: 1600px;
+    height: 1280px;
+    overflow: hidden;
+  }
+
+  .page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 1600px;
+    height: 1280px;
+    padding: 44px 56px 30px;
+    background:
+      radial-gradient(900px 520px at 8% -8%, rgba(125, 148, 120, .16), transparent 62%),
+      radial-gradient(760px 480px at 100% 6%, rgba(189, 132, 101, .12), transparent 60%),
+      linear-gradient(180deg, #f8f4ec 0%, var(--paper) 58%, #f1ebe0 100%);
+  }
+
+  .page::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(120, 105, 88, .14);
+    border-radius: 26px;
+    pointer-events: none;
+  }
+
+  header {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    margin: 0 0 12px;
+    color: var(--sage);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    font-size: 66px;
+    font-weight: 500;
+    letter-spacing: -.035em;
+    line-height: .95;
+  }
+
+  .subtitle {
+    margin: 14px 0 0;
+    max-width: 880px;
+    color: var(--ink-soft);
+    font-size: 21px;
+    line-height: 1.42;
+  }
+
+  .subtitle strong {
+    color: var(--ink);
+    font-weight: 650;
+  }
+
+  .status {
+    justify-self: end;
+    width: 300px;
+    padding: 18px 20px;
+    background: rgba(255, 253, 248, .72);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+
+  .status .label {
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .status .value {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .status .value b { color: var(--clay); }
+
+  main {
+    display: grid;
+    grid-template-columns: 356px 1fr 338px;
+    gap: 26px;
+    padding-top: 26px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-pad { padding: 22px 24px; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .problem {
+    padding: 22px 24px 20px;
+    background:
+      linear-gradient(145deg, rgba(189, 132, 101, .08), transparent 58%),
+      var(--card);
+  }
+
+  .problem h2 {
+    margin: 0 0 10px;
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.18;
+  }
+
+  .problem p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .problem .symptom {
+    display: grid;
+    gap: 6px;
+    margin-top: 14px;
+    padding-top: 13px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .symptom span::before {
+    content: "—";
+    margin-right: 8px;
+    color: var(--clay);
+  }
+
+  .images {
+    padding: 22px 24px 10px;
+    flex: 1;
+  }
+
+  .image-row {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .image-row:first-of-type { border-top: 0; padding-top: 2px; }
+
+  .num {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--sage-soft);
+    color: var(--sage);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .03em;
+  }
+
+  .image-row:nth-child(2) .num { background: var(--blue-soft); color: var(--blue); }
+  .image-row:nth-child(3) .num { background: var(--clay-soft); color: var(--clay); }
+  .image-row:nth-child(4) .num { background: #efe9dc; color: #8b7760; }
+
+  .image-row h3 {
+    margin: 1px 0 5px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+
+  .image-row p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+
+  .flow {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 26px 18px;
+    flex: 1;
+  }
+
+  .stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 16px;
+    padding: 0 0 18px;
+  }
+
+  .stage:last-child { padding-bottom: 0; }
+
+  .stage::before {
+    content: "";
+    position: absolute;
+    top: 44px;
+    bottom: 0;
+    left: 28px;
+    width: 1px;
+    background: var(--line-strong);
+  }
+
+  .stage:last-child::before { display: none; }
+
+  .stage-marker {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-size: 21px;
+  }
+
+  .stage.state .stage-marker {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: #fffdf8;
+  }
+
+  .stage.end .stage-marker {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fffdf8;
+  }
+
+  .stage-body { padding-top: 1px; }
+
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+
+  .stage-head h3 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: -.015em;
+  }
+
+  .stage-tag {
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .stage.state .stage-tag { background: var(--sage-soft); border-color: transparent; color: var(--sage); }
+
+  .stage p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.48;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 9px;
+  }
+
+  .chip {
+    padding: 4px 8px;
+    border-radius: 7px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    font-size: 11px;
+    letter-spacing: -.01em;
+  }
+
+  .chip.soft {
+    font-family: inherit;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+
+  .role {
+    display: grid;
+    grid-template-columns: .9fr 1.3fr;
+    gap: 18px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  .role .kicker {
+    margin-bottom: 4px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .role .is-not .kicker { color: var(--clay); }
+  .role .is .kicker { color: var(--sage); }
+
+  .role p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+  }
+
+  .role .is-not p { color: var(--muted); }
+
+  .outcomes {
+    padding: 18px 26px 20px;
+    background:
+      linear-gradient(135deg, rgba(125, 148, 120, .10), transparent 58%),
+      var(--card);
+  }
+
+  .outcomes .section-label { margin-bottom: 12px; }
+
+  .outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .outcome h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 750;
+  }
+
+  .outcome p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.42;
+  }
+
+  .guardrails {
+    padding: 22px 24px 12px;
+  }
+
+  .guardrail {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 10px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .guardrail:first-of-type { border-top: 0; padding-top: 0; }
+
+  .guardrail .dot {
+    width: 9px;
+    height: 9px;
+    margin-top: 5px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
+  .guardrail:nth-child(3n) .dot { background: var(--clay); }
+  .guardrail:nth-child(3n+2) .dot { background: var(--blue); }
+
+  .guardrail h3 {
+    margin: 0 0 2px;
+    font-size: 14.5px;
+    font-weight: 700;
+  }
+
+  .guardrail p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.42;
+  }
+
+  .measure {
+    padding: 22px 24px 18px;
+    background:
+      linear-gradient(150deg, rgba(112, 135, 152, .09), transparent 65%),
+      var(--card);
+  }
+
+  .measure-item {
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .measure-item:first-of-type { border-top: 0; padding-top: 0; }
+
+  .measure-item h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 0 3px;
+    font-size: 14.5px;
+    font-weight: 750;
+  }
+
+  .measure-item h3 span {
+    color: var(--blue);
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .02em;
+  }
+
+  .measure-item p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.42;
+  }
+
+  .measure-note {
+    margin-top: 8px;
+    padding: 11px 12px;
+    border-radius: 10px;
+    background: rgba(255, 253, 248, .72);
+    border: 1px dashed var(--line-strong);
+    color: var(--ink-soft);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .measure-note b { color: var(--clay); }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  footer strong { color: var(--ink-soft); font-weight: 650; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <p class="eyebrow">Harness Mentor · Skill-Architektur</p>
+      <h1>harness-mentor</h1>
+      <p class="subtitle">
+        Ein Mentor für die Arbeit mit einem KI-Agenten: erst verstehen, dann einrichten,
+        dann leise begleiten — bis die Person <strong>ihn nicht mehr braucht</strong>.
+      </p>
+    </div>
+    <div class="status">
+      <div class="label">Stand</div>
+      <div class="value">
+        2026-10-24 · Qoder-Anhang geprüft<br>
+        Kern <b>harness-neutral</b>; Claude Code und Cursor ungeprüft
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="column">
+      <article class="card problem">
+        <h2>Das Problem ist nicht das Modell.</h2>
+        <p>
+          Der Agent ist fähig, aber ohne Betriebsgedächtnis. Die Person weiß oft nicht,
+          wonach sie fragen müsste — und jede Sitzung beginnt anders.
+        </p>
+        <div class="symptom">
+          <span>„Er versteht mich falsch."</span>
+          <span>„Er erinnert sich an nichts."</span>
+          <span>„Ich erkläre das jede Woche neu."</span>
+        </div>
+      </article>
+
+      <article class="card images">
+        <p class="section-label">Vier Grundbilder</p>
+
+        <div class="image-row">
+          <div class="num">01</div>
+          <div>
+            <h3>Fremde Arbeitskraft</h3>
+            <p>Fähig, aber ohne Betriebsgedächtnis: Was am Abend nicht in einer Datei steht, ist am Morgen weg.</p>
+          </div>
+        </div>
+
+        <div class="image-row">
+          <div class="num">02</div>
+          <div>
+            <h3>Kontext ist der Hebel</h3>
+            <p>Sagen, anbieten, erlauben. Mehr lässt sich am Modell nicht drehen — das macht Probleme diagnostizierbar.</p>
+          </div>
+        </div>
+
+        <div class="image-row">
+          <div class="num">03</div>
+          <div>
+            <h3>Vertrauen ist Korrigierbarkeit</h3>
+            <p>Nicht Zuverlässigkeit. Die erste Korrektur, die sichtbar und dauerhaft wirkt, entscheidet.</p>
+          </div>
+        </div>
+
+        <div class="image-row">
+          <div class="num">04</div>
+          <div>
+            <h3>Auftrag ist nicht Absicht</h3>
+            <p>Die Arbeitskraft führt präzise aus — auch das Falsche. Erst das Warum macht das Ergebnis passend.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="column">
+      <article class="card flow">
+        <p class="section-label">Der Weg</p>
+
+        <div class="stage">
+          <div class="stage-marker">01</div>
+          <div class="stage-body">
+            <div class="stage-head">
+              <h3>Einrichten</h3>
+              <span class="stage-tag">Modus</span>
+            </div>
+            <p>
+              Erst wer da sitzt und was sich ändern soll. Dann Block für Block:
+              Person, Absicht, Regeln, Ablage, Gedächtnis. Jeder Block endet mit einer Datei.
+            </p>
+            <div class="chips">
+              <span class="chip">USER.md</span>
+              <span class="chip">AGENTS.md</span>
+              <span class="chip">docs/VISION.md</span>
+              <span class="chip">private/</span>
+              <span class="chip">MEMORY.md</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage state">
+          <div class="stage-marker">02</div>
+          <div class="stage-body">
+            <div class="stage-head">
+              <h3>Begleitnotiz</h3>
+              <span class="stage-tag">Zustand</span>
+            </div>
+            <p>
+              Der einzige Apparat: ein <b>project</b>-Memory-Eintrag mit Grad, Beobachtungen,
+              offenen Punkten und gelandeten Korrekturen. Kein eigenes Dashboard, keine Extra-Datei.
+            </p>
+            <div class="chips">
+              <span class="chip soft">Grad</span>
+              <span class="chip soft">Signal + Anzahl</span>
+              <span class="chip soft">gelandete Korrekturen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker">03</div>
+          <div class="stage-body">
+            <div class="stage-head">
+              <h3>Begleiten</h3>
+              <span class="stage-tag">Modus</span>
+            </div>
+            <p>
+              Schweigen ist der Standard. Ein Signal wird ab dem zweiten Vorkommen zum Anlass.
+              Höchstens eine Regung pro Sitzung — als Angebot mit Rückzug.
+            </p>
+            <div class="chips">
+              <span class="chip soft">Schweigen protokollieren</span>
+              <span class="chip soft">2× Schwelle</span>
+              <span class="chip soft">4 Anstöße</span>
+              <span class="chip soft">1 Regung</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage end">
+          <div class="stage-marker">04</div>
+          <div class="stage-body">
+            <div class="stage-head">
+              <h3>Auszug</h3>
+              <span class="stage-tag">Ziel</span>
+            </div>
+            <p>
+              Beendet, wenn eine echte Aufgabe gelaufen ist, eine Korrektur gewirkt hat
+              und eine neue Sitzung nahtlos angeschlossen wurde. Die Abhängigkeit nimmt ab.
+            </p>
+            <div class="chips">
+              <span class="chip soft">echte Aufgabe</span>
+              <span class="chip soft">Korrektur wirkt</span>
+              <span class="chip soft">neue Sitzung trägt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="is-not">
+            <div class="kicker">Nicht</div>
+            <p>Coach · Kontrolleur · Bewertungsinstanz</p>
+          </div>
+          <div class="is">
+            <div class="kicker">Sondern</div>
+            <p>Die fehlende Information oder Möglichkeit, im richtigen Moment — und sonst Schweigen.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card outcomes">
+        <p class="section-label">Was der Skill erreicht</p>
+        <div class="outcome-grid">
+          <div class="outcome">
+            <h3>Absicht statt Auftrag</h3>
+            <p>Der Agent prüft das Warum, bevor er das Wie optimiert.</p>
+          </div>
+          <div class="outcome">
+            <h3>Korrektur, die wirkt</h3>
+            <p>Regeln und Gedächtnis machen aus einem Nein eine dauerhafte Änderung.</p>
+          </div>
+          <div class="outcome">
+            <h3>Begleitung mit Ende</h3>
+            <p>Der Erfolg ist nicht Bindung, sondern Selbstständigkeit.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="column">
+      <article class="card guardrails">
+        <p class="section-label">Leitplanken</p>
+
+        <div class="guardrail">
+          <div class="dot"></div>
+          <div>
+            <h3>Erleben vor Artefakt</h3>
+            <p>Keine Vorlage ohne erlebten oder benannten Bedarf. Dateien sind Rückstand, nicht Ersatz.</p>
+          </div>
+        </div>
+
+        <div class="guardrail">
+          <div class="dot"></div>
+          <div>
+            <h3>Regeln führen oder blockieren</h3>
+            <p>Nur führende Regeln. Jede verfallsanfällige mit Datum und Umkehrbedingung.</p>
+          </div>
+        </div>
+
+        <div class="guardrail">
+          <div class="dot"></div>
+          <div>
+            <h3>Ehrlichkeit über Fähigkeiten</h3>
+            <p>Nur aus der Live-Tool-Liste. Was nicht geprüft ist, bleibt ungeprüft.</p>
+          </div>
+        </div>
+
+        <div class="guardrail">
+          <div class="dot"></div>
+          <div>
+            <h3>private/ bleibt privat</h3>
+            <p>Keine echten Konten, keine Inhalte nach außen. Verweis mit Pfad genügt.</p>
+          </div>
+        </div>
+
+        <div class="guardrail">
+          <div class="dot"></div>
+          <div>
+            <h3>Markdown ist eine Bitte</h3>
+            <p>Was garantiert sein muss, gehört in Hooks und Rechte — nicht in eine Regelzeile.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card measure">
+        <p class="section-label">Woran wir messen</p>
+
+        <div class="measure-item">
+          <h3>Trigger <span>EVAL</span></h3>
+          <p>Feuert der Skill im richtigen Moment — und nicht bei jedem Coding-Task?</p>
+        </div>
+
+        <div class="measure-item">
+          <h3>Kontinuität <span>EVAL</span></h3>
+          <p>Bleibt die Begleitung nach Wochen aktiv, ohne zur Störstimme zu werden?</p>
+        </div>
+
+        <div class="measure-item">
+          <h3>Lackmus-Test <span>MENSCH</span></h3>
+          <p>Kann die Person die vier Bilder nach 2–3 Wochen in eigenen Worten wiedergeben?</p>
+        </div>
+
+        <div class="measure-note">
+          <b>Keine Tests um des Testens willen.</b> Gemessen wird nur, was eine Entscheidung
+          prüft: Trigger, Artefakte, Kontinuität. Didaktik bleibt den Persona-Probeläufen.
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Quelle:</strong> <span>harness-mentor/SKILL.md, references/ und assets/, Stand 2026-10-24.</span>
+    </div>
+    <div>
+      <strong>Grafik:</strong> docs/architecture/harness-mentor-essenz.html · PNG daneben · keine Herstellerangabe als Funktionsnachweis.
+    </div>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,6 +1,16 @@
-# Context Sign-Off — Company Harness
+# Context Sign-Off — Harness Mentor
 
-**Stand 2026-10-11 — Richtungsänderung, dieser Hinweis geht allem vor.** Das Produkt ist nicht mehr der
+**Aktueller Vorrang:** Der Produktname bleibt **Harness Mentor**, technisch `harness-mentor`.
+Manuel hat den zunächst gewünschten Namen Set Me Up zurückgenommen. Es handelt sich um einen
+persönlichen Onboarding- und Begleit-Skill mit dem Ziel der eigenständigen Harness-Nutzung.
+Der aktuelle Einstieg liegt in [`.qoder/skills/harness-mentor/SKILL.md`](.qoder/skills/harness-mentor/SKILL.md).
+Der [Funktionsabgleich](docs/product-plan.md#funktionsabgleich-und-änderungsplan) trennt vorhandene
+Anweisungen, beobachtete Wirkung und noch vorgeschlagene Erweiterungen. Funktionale Erweiterungen
+sind nicht freigegeben und wurden bei der Namensangleichung nicht implementiert.
+Die älteren Abschnitte unten bleiben Vorgeschichte. Quelle: Manuels Auftrag und Namenskorrektur
+im aktuellen Chat, Stand 2026-10-25.
+
+**Historischer Stand 2026-10-11 — durch den aktuellen Vorrang oben präzisiert.** Das Produkt ist nicht mehr der
 Messprüfstand, sondern ein **Skill**: ein geführtes Setup, das eine Person an die Hand nimmt, die zum
 ersten Mal einen Harness benutzt — Erklärung, was ein Harness ist, dann Aufbau des Grundkontexts.
 Entscheidung und Begründung stehen in [`DECISIONS.md`](DECISIONS.md), Einträge vom 2026-10-11. Der
@@ -149,7 +159,7 @@ Validator, Messprotokoll).
 **Außerhalb dieses Workspaces, aber relevant:**
 
 - `D:\OneDrive\Delta Weave` — der Kontext-Hub: Person, Firma, Projekte, Kontakte, Entscheidungen.
-  Dort liegt weiterhin der schlanke Knoten `projects/company-harness.md` als Verweis auf diesen
+  Dort liegt weiterhin der schlanke Knoten `projects/harness-mentor.md` als Verweis auf diesen
   Workspace. Hub-Regeln: erst `MAP.md`, dann der betroffene Knoten.
 - `D:\OneDrive\Delta Weave\company\vision.md` — Methode und Anspruch von Delta Weave; die offene Frage,
   ob Delta Weave Auftragsarbeit oder ein eigenes Produkt ist, betrifft dieses Projekt direkt.

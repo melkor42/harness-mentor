@@ -1,13 +1,13 @@
-# Company Harness — Arbeitsregeln für Agents
+# Harness Mentor — Arbeitsregeln für Agents
 
-Dieser Workspace gehört zur Produktidee **Company Harness Product Idea** von Delta Weave. Er ist der
+Dieser Workspace gehört zum Skill **Harness Mentor** von Delta Weave. Er ist der
 Ort für die Umsetzung; der Unternehmenskontext liegt außerhalb.
 
 ## Lies in dieser Reihenfolge
 
 1. [`CONTEXT-SIGNOFF.md`](CONTEXT-SIGNOFF.md) — Stand, was bestätigt ist, was Vorschlag ist, was offen ist.
 2. [`docs/product-plan.md`](docs/product-plan.md) — Produktthese, Prozesse, Architektur, Quellen.
-3. Bei Fragen zu Person, Firma, Projekten oder Freigaben: `D:\OneDrive\Delta Weave\MAP.md`.
+3. Bei Fragen zu Person, Firma, Projekten oder Freigaben: `C:\Users\ASUS GAMING\OneDrive\Delta Weave\MAP.md`.
 
 ## Harte Regeln
 
@@ -38,6 +38,6 @@ anderen Tool läuft in einem separaten, isolierten Repo.
 - Entscheidung oder Richtungsänderung → **anhängen** in [`DECISIONS.md`](DECISIONS.md), mit Datum.
   Verworfene Vorschläge bleiben stehen und werden als ersetzt markiert.
 - Geändert hat sich etwas am Produktumfang? Dann auch den Delta-Weave-Knoten
-  `D:\OneDrive\Delta Weave\projects\company-harness.md` und `MAP.md` nachziehen — der Hub ist das
+  `C:\Users\ASUS GAMING\OneDrive\Delta Weave\projects\harness-mentor.md` und `MAP.md` nachziehen — der Hub ist das
   Verzeichnis über alle Projekte.
-- Vor irgendetwas, das nach außen geht: `D:\OneDrive\Delta Weave\company\oeffentlichkeit.md` gegenprüfen.
+- Vor irgendetwas, das nach außen geht: `C:\Users\ASUS GAMING\OneDrive\Delta Weave\company\oeffentlichkeit.md` gegenprüfen.

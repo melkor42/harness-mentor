@@ -1,4 +1,78 @@
-# Company Harness Product Idea — Product Plan
+# Harness Mentor — Product Plan
+
+## Funktionsabgleich und Änderungsplan
+
+**Bestätigte Zielvorstellung:** persönlicher Onboarding- und Begleit-Skill für die Arbeit mit
+KI-Agenten; bestehende Umgebung verstehen, gemeinsam verbessern, persönlichen Kontext pflegen
+und die Person zur eigenständigen Nutzung befähigen. Begleitung nimmt mit Erfahrung ab.
+**Name:** Harness Mentor (`harness-mentor`). Der zwischenzeitlich gewünschte Name Set Me Up ist
+durch Manuels Korrektur ersetzt. **Umfang dieser Änderung:** Namensangleichung und Analyse;
+keine funktionale Erweiterung. Quelle: Manuels Auftrag und anschließende Namenskorrektur im Chat,
+Stand 2026-10-25.
+
+### Befund am aktuellen Bestand
+
+„Implementiert“ bedeutet hier als ausführbare Skill-Anweisung vorhanden, nicht als deterministische
+Softwarefunktion garantiert. Bewertet wurde der aktuelle lokale Bestand einschließlich schon vor
+diesem Auftrag vorhandener Änderungen. Die Architektur bleibt Skill als Programm plus
+`project`-Memory-Eintrag als Zustand. Quelle: `.qoder/skills/harness-mentor/SKILL.md`,
+`references/begleiten-disziplin.md` im selben Skill, Stand 2026-10-25.
+
+| Ziel | Status | Beleg und verbleibende Lücke |
+|---|---|---|
+| Bestehenden Harness analysieren und Verbesserungen finden | **Teilweise** | `references/einrichten-leitfaden.md`, Block 0, fragt nach Harness und vorhandenen Regeln und verlangt deren Erhalt. Es fehlt ein systematischer Abgleich von aktiven Konfigurationsorten, Ladereihenfolge, verfügbaren Funktionen und Konflikten. Ohne Begleitnotiz führt die Moduswahl immer in Einrichten, auch bei einer bereits erfahrenen Person. |
+| Im Dialog passende Arbeitsweisen entwickeln | **Implementiert** | Einrichten-Leitfaden: Zweck jeder Frage, Verhaltens-Prüfstein, vorhandene Antworten wiederverwenden, Vorschläge zur Korrektur, Sprache und Beispiele anpassen. Einschränkung: „eng führen“ wird einheitlich voreingestellt; bereits gültige Freigaben und Erfahrung sind nicht ausdrücklich von dieser Vorgabe ausgenommen. |
+| USER-, Regel-, Vision- und Memory-Dateien aufbauen | **Implementiert** | Leitfaden und `assets/vorlagen/` liefern Dateien, Strukturen und Memory-Schreibregeln; vorhandener Kontext soll erhalten bleiben. Der tatsächliche Ladeeffekt ist gesondert zu prüfen. |
+| Die tatsächlichen Dateikonventionen des Harness beachten | **Teilweise** | `references/anhaenge/qoder.md` ist der einzige Anhang und enthält feste Pfade eines Referenzrechners. Der Kern setzt vielfach `AGENTS.md`, `USER.md` und ein bestimmtes Memory-Schema voraus. Verifizierte Anpassungen für andere Harnesses fehlen. |
+| Fehlende Funktionen und Strukturen erkennen und anbieten | **Teilweise** | Begleiten-Disziplin benennt wiederholte Reibung, fehlenden Kontext und Werkzeuge aus der tatsächlichen Werkzeugliste. Ein initialer bedarfsbezogener Funktionsabgleich und die Unterscheidung verfügbar/deaktiviert/nicht geprüft fehlen als expliziter Ablauf. |
+| Kontext kontinuierlich verbessern | **Teilweise** | Memory-Hygiene, Umkehrbedingungen, Quellenpflicht und Pflege bei Fehlern/Richtungsänderung sind vorhanden. Widerspruch: Zustand soll aktualisiert werden, die Begleitnotiz dagegen nur angehängt und zugleich klein gehalten werden. Eine eindeutige Regel zur aktuellen Zustandsansicht fehlt. |
+| In den ersten Tagen und Wochen begleiten | **Teilweise** | Begleitnotiz, vereinbarter Pflegeanlass, Fortsetzung und Retention-Gegenprobe sind beschrieben. Ein optionaler Qoder-Hook wird erwähnt, aber nicht eingerichtet oder als wirksamer Wiederaufnahmeweg nachgewiesen. Ein Skill allein wacht nicht zu einem Termin auf. |
+| Nur hilfreich und mit Rückzugsmöglichkeit eingreifen | **Implementiert** | Begleiten-Disziplin fordert beobachtbare Signale, Kosten des Schweigens, begrenzte Interventionen und akzeptierte Ablehnung. Pausen-/Snooze-Semantik und ein protokollarmer Umgang mit Schweigen sind noch nicht eindeutig beschrieben. |
+| Befähigung statt Abhängigkeit | **Implementiert; Wirkung ungeprüft** | Didaktik verlangt eigenes Anwenden und Korrigieren; Begleitung bietet bei belegter Selbstständigkeit ihr Ende an und akzeptiert „aus“. Ein längerfristiger unabhängiger Nutzerbefund liegt nicht vor. |
+
+Quelle für die gesamte Tabelle: `.qoder/skills/harness-mentor/SKILL.md`, dessen
+`references/einrichten-leitfaden.md`, `references/begleiten-disziplin.md`,
+`references/didaktik.md`, `references/anhaenge/qoder.md` und `assets/vorlagen/`, Stand 2026-10-25.
+
+### Was tatsächlich getestet ist
+
+Die vorhandene Qoder-Baseline meldet 34 von 35 korrekten Trigger-Entscheidungen; ein positiver
+AGENTS-Fall wurde verfehlt. Fortsetzungsfälle verwenden vorbereitete Begleitnotizen und simulieren
+Zeitabstände; sie belegen keine tatsächlich über Wochen laufende Begleitung. Manuelle
+Qualitätschecklisten sind im Bericht noch offen. Quelle: `../evals/results/2026-10-24-baseline.md`
+und `../evals/cases.json`, Stand 2026-10-24.
+
+Der Varianzlauf ergänzt erfolgreiche Wiederholungen, ersetzt aber keinen Nutzerbefund.
+Die Ablation ist als kontaminiert dokumentiert, weil Dateien des Skills aus dem Test-Workspace
+weiter erreichbar waren. Der Unterschied zwischen „mit Skill“ und „ohne Skill“ ist deshalb
+nicht sauber nachgewiesen. Quelle: `../evals/results/2026-10-24-variance.md`,
+`../evals/results/2026-10-24-ablation.md` und `../evals/README.md`, Stand 2026-10-24.
+
+### Priorisierter Vorschlag — noch nicht implementieren
+
+| Priorität | Betroffene Dateien | Konkrete Anpassung | Abnahme |
+|---|---|---|---|
+| Hoch: Bestandsanalyse vor Einrichtung | `SKILL.md`, `references/einrichten-leitfaden.md`, `evals/cases.json` im aktuellen Skill bzw. Repo | Vorhandene Umgebung und konkreten Bedarf erfassen; ohne Begleitnotiz nicht automatisch ein Erst-Setup unterstellen. Vorhandene gültige Regeln, Freigaben und Dateien erhalten; nur die nötige Ergänzung anbieten. Kein neuer Modus nötig. | Ein bereits eingerichteter Workspace erhält eine begründete Diagnose ohne erneutes Interview und ohne überschriebenen Kontext. |
+| Hoch: Dateikonventionen und Ladebelege | `references/anhaenge/qoder.md`, `references/einrichten-leitfaden.md`, `assets/vorlagen/AGENTS.md`, `assets/vorlagen/MEMORY.md`; bei belegtem Bedarf weitere Anhänge | Pfade aus der aktuellen Installation ermitteln statt einen Benutzernamen vorauszusetzen. Native Regeldatei, Geltungsbereich, automatische Ladung und bloße Referenzen getrennt beschreiben. Unbekannte Harnesses ausdrücklich ungeprüft lassen. Neue-Sitzung-Test mit Dateiquelle/Ladebeleg ergänzen; eine passende Antwort allein beweist keinen automatischen Ladevorgang. | Kontext landet am tatsächlichen Ladeort; ein nicht ladender Marker wird erkannt; bestehende native Konventionen bleiben erhalten. |
+| Hoch: Sicherheitsgrenze richtig formulieren | `SKILL.md`, `references/anhaenge/qoder.md` | Aussagen, Hooks seien die Stelle für Garantien, korrigieren: Rechte und externe Durchsetzung an konkrete Aktion/Nutzlast binden; ein Hook allein ist keine Sicherheitsgrenze. | Keine Vorlage oder Erklärung verspricht Schutz durch Markdown oder allein durch Hook-Registrierung. |
+| Hoch: Fortsetzung ehrlich und nutzergesteuert | `references/einrichten-leitfaden.md`, `references/begleiten-disziplin.md`, jeweiliger Harness-Anhang | Wiederaufnahme nur über einen tatsächlich verfügbaren und geprüften Mechanismus vereinbaren. Ohne diesen: Wiedereinstieg durch die Person. Einverständnis, Pause, Ende und gegebenenfalls vorhandene Erinnerungsfunktion festhalten; keine erfundene Hintergrundbeobachtung. | Mit und ohne Wiederaufnahmemöglichkeit bleibt die Zusage korrekt; Ablehnung und „aus“ beenden die Begleitung sofort. |
+| Mittel: Zustand konsistent halten | `references/begleiten-disziplin.md`, `references/einrichten-leitfaden.md`, `assets/vorlagen/memory-eintrag.md` | Aktuellen Grad und offene Punkte aktualisieren, wichtige historische Begründungen kompakt erhalten. Routine-Schweigen nicht unbegrenzt protokollieren. „Begleitgrad“ und externe Handlungsfreigabe klar unterscheiden. | Wiederaufnahme mit alten oder widersprüchlichen Einträgen nutzt den aktuellen Zustand und erfindet keine Erlebnisse. |
+| Mittel: Funktionslücken bedarfsbezogen anbieten | `references/einrichten-leitfaden.md`, `references/begleiten-disziplin.md` | Gewünschten Arbeitsablauf gegen reale Werkzeuge/Rechte prüfen; verfügbar, nicht verbunden und ungeprüft unterscheiden. Nötige Einrichtung anbieten, fehlende Credentials nur als Nutzeraufgabe notieren. | Eine konkrete Reibung führt zu einem begründeten Angebot; ohne Reibung entsteht kein Tool-Installationsprogramm. |
+| Mittel: Wirksamkeit und Selbstständigkeit belegen | `evals/cases.json`, `evals/run.py`, `evals/README.md`, `references/didaktik.md` | Fälle für bestehenden Workspace, alternative Dateikonvention, fehlenden Trigger, Pause und Kontextkonflikt ergänzen. Ablation wirklich isolieren. Retention mit realer Nutzung prüfen; eigenes Korrigieren und Weiterarbeiten höher gewichten als das Wiedergeben von Begriffen. | Reproduzierbare technische Befunde und getrennt dokumentierter Nutzerbefund; keine Qualitätsbehauptung allein aus Trigger-Raten. |
+
+Alle Skill-Pfade in dieser Tabelle sind relativ zu `.qoder/skills/harness-mentor/`, Eval-Pfade
+relativ zum Repository. Reihenfolge ist eine Agentenempfehlung, keine Freigabe. Quelle: Abgleich
+des oben genannten Bestands mit Manuels Zielvorstellung, Stand 2026-10-25.
+
+### Namensmigration und offene Handgriffe
+
+Aktueller öffentlicher Name: **Harness Mentor**; Skill-Slug unverändert `harness-mentor`.
+Historische Entscheidungen, ursprüngliche Konzeptquellen und Eval-Rohspuren behalten den Namen,
+unter dem sie entstanden sind. Die Vorgängerversion bleibt als solche erkennbar; sie wird nicht
+still zum aktuellen Skill erklärt. Quelle: Namenskorrektur im Chat, Stand 2026-10-25.
+
+Die konkrete Ausführung und verbleibende Handgriffe stehen im neuen Namenseintrag der
+[`DECISIONS.md`](../DECISIONS.md). Die nachfolgenden Abschnitte sind frühere Planungsstände.
 
 **Status: product idea with sourced market exploration; architecture and development plan proposed, not approved or implemented.**
 Working analysis as of 2026-09-19. The title is confirmed by Manuel; technology choices remain provisional.
@@ -66,6 +140,11 @@ confirmation that the two-occurrence threshold matches its two-episode disciplin
 
 **Open:** distribution/discoverability (v2 stays manually invoked); whether the explanatory part
 permanently belongs to the product (lens fa76's fork — for now yes, as the didactics core).
+
+**Update 2026-10-24:** the synthesis above is kept as written. Direction has since gained a fourth
+mental image — *the task is not the intention* — from Manuel's essay *Die Architektur der Intention*;
+it is now anchored in the didactics, the intake (Block 2), and the VISION/AGENTS templates. See
+[`../DECISIONS.md`](../DECISIONS.md), 2026-10-24.
 
 ## Product thesis
 

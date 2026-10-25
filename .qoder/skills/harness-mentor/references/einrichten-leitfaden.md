@@ -30,8 +30,9 @@ Klären, bevor etwas geschrieben wird:
 1. Welchen Harness benutzt du? *(Entscheidet, welcher Anhang aus `anhaenge/` gilt.)*
 2. Was machst du — Arbeit, Rolle, wichtigste Projekte?
 3. Was soll der Agent für dich übernehmen?
-4. Gibt es schon Dateien, Regeln oder Notizen, die weiter gelten sollen? *(Vorhandenes
-   lesen und einbauen — nie plattmachen.)*
+4. Gibt es schon Dateien, Regeln, Entscheidungen oder Notizen, die weiter gelten
+   sollen? *(Vorhandenes lesen und einbauen — nie plattmachen. Dazu gehören auch
+   verworfene Wege und die Gründe früherer Entscheidungen.)*
 
 **Arbeitskontext einordnen, nicht etikettieren.** Aus den Antworten ableiten, mit
 welcher Passung der Mentor arbeitet: Eine Entwicklerin bekommt Vergleiche mit
@@ -43,10 +44,10 @@ den Unterschied, wie er hilft.
 
 ## Grundbilder verankern (vor allen Dateien)
 
-`didaktik.md` laden und die drei Grundbilder einführen — an einer Situation des
+`didaktik.md` laden und die vier Grundbilder einführen — an einer Situation des
 Nutzers, nicht als Vortrag: fremde Arbeitskraft mit begrenztem Gedächtnis; Kontext
-als einzige Hebelstelle (sagen, anbieten, erlauben); Vertrauen als Korrigierbarkeit.
-Genau eine Rückfrage: „Was davon ist dir neu?"
+als einzige Hebelstelle (sagen, anbieten, erlauben); Vertrauen als Korrigierbarkeit;
+der Auftrag ist nicht die Absicht. Genau eine Rückfrage: „Was davon ist dir neu?"
 
 ## Block 1 — Die Person → `USER.md`
 
@@ -69,15 +70,36 @@ wandern als datierte Regeln in die `AGENTS.md` (Block 3).
 Aus den Antworten und aus Block 0 die vier Abschnitte der Vorlage
 `assets/vorlagen/USER.md` füllen.
 
-## Block 2 — Arbeit und Ziel → `VISION.md`
+## Block 2 — Absicht und Ziel → `VISION.md`
 
-Fragen: Was soll mit diesem Setup entstehen — nicht heute, sondern wenn es
-funktioniert? *Zweck: der Nordstern für Vorschläge und Prioritäten des Agenten.*
-Was ist jetzt mühsam, das es dann nicht mehr sein soll? *Zweck: die Liste der
-ersten Workflows — Abschnitt „Aktuelle Herausforderungen", mit Datum.* Woran
-könnte das Ganze scheitern? *Zweck: daraus werden Schutzregeln.*
+**Auftrag und Absicht sind nicht dasselbe.** Der Auftrag nennt das Wie („ein
+Dashboard"), die Absicht das Warum und Für-wen. Frage zuerst nach der Absicht —
+so, dass das genannte Produkt noch hinterfragbar bleibt; reicht die Antwort
+nicht, wird sie als OFFEN markiert, nicht erfunden.
 
-Vorlage: `assets/vorlagen/VISION.md`.
+Fragen:
+
+1. „Was soll sich für wen verändern, wenn das hier funktioniert?" — *Zweck: der
+   Nordstern für Vorschläge und Prioritäten des Agenten.*
+2. „Woran würdest du merken, dass es gut ist — und was würde sich falsch
+   anfühlen?" — *Zweck: daraus wird der Qualitätsmaßstab; das „falsch" ist oft
+   konkreter als das „gut".*
+3. „Was ist nicht verhandelbar, und was ist nur deine erste Vermutung?" —
+   *Zweck: Festlegung und Hypothese bleiben unterscheidbar; die Hypothese darf
+   durch Erfahrung überholt werden.*
+4. „Was ist jetzt mühsam — und woran könnte das Ganze scheitern?" — *Zweck:
+   Herausforderungen und Risiken; daraus werden Schutzregeln für spätere Blöcke.*
+
+Vorhandenes aus Block 0 — Entscheidungen, Regeln, verworfene Wege — fließt als
+Hintergrund ein, damit der Agent Neues gegen den Stand prüft, statt ihn zu
+wiederholen oder rückgängig zu machen.
+
+Was offen ist, bleibt offen: Unklarheit bei Begriffen und Zuständigkeit klären;
+Fragen, die nur das Ausprobieren beantwortet, als Experiment notieren. Ein Dokument,
+das alle Fragen beantwortet, ist verdächtig.
+
+Vorlage: `assets/vorlagen/VISION.md`. Die Absicht in einem Satz festhalten; die
+Details darunter.
 
 ## Block 3 — Regeln → `AGENTS.md`
 
@@ -97,6 +119,11 @@ Die erste Regel steht vor der ersten Frage fest: die Voreinstellung aus Block 1
 kommt mit dem Einrichtungsdatum in die Datei; jede spätere Lockerung wird als eigene
 datierte Regel darunter angehängt, nie überschrieben.
 
+Zusammen mit ihr kommt die Absichts-Regel in die Datei — die zweite führende
+Regel: „Beginne beim Warum: Wenn ein Auftrag nur das Wie nennt, frag nach der
+Absicht — was soll sich für wen ändern —, bevor du umsetzt." Sie führt, weil sie
+jede Aufgabe verbessert, ohne einen Weg vorzuschreiben.
+
 Fragen: Was soll der Agent **nie** tun? Was soll er **immer** tun? Jede Antwort an
 den drei Maßstäben messen, bevor sie in die Datei darf.
 
@@ -112,7 +139,7 @@ Grundmuster:
 ├── AGENTS.md            # Regeln (immer geladen)
 ├── USER.md              # die Person
 ├── docs/
-│   └── VISION.md        # Ziel und Herausforderungen
+│   └── VISION.md        # Absicht, offene Fragen, Stand
 ├── memory/              # Memory-Dateien + MEMORY.md (falls harness-seitig nicht vorgegeben)
 └── private/             # privat, nie an Dritte, nie pushen — in .gitignore eintragen
 ```
@@ -131,7 +158,7 @@ selbst vorgibt) und drei erste Einträge gemeinsam schreiben: ein `user-`-Eintra
 **Why:** und **How to apply:**), ein `reference-`-Eintrag (wo die Memory-Dateien
 liegen).
 
-Vier Schreibregeln mitgeben — sie verhindern, dass das Gedächtnis zur Falle wird:
+Fünf Schreibregeln mitgeben — sie verhindern, dass das Gedächtnis zur Falle wird:
 
 - **Dreiteilung.** Jeder Eintrag ist dauerhafte Präferenz, veränderlicher Zustand
   oder historisches Ereignis — die Art entscheidet den Umgang. Bei „das ist
@@ -148,6 +175,9 @@ Vier Schreibregeln mitgeben — sie verhindern, dass das Gedächtnis zur Falle w
 - **Nichts Tägliches, nichts Nachlesbares.** Kein Tageszustand, kein Vorratswissen,
   keine Duplikate, keine Absichten. Und ausdrücklich vereinbaren, **was nie** in
   Memories gehört: Credentials, Inhalte aus `private/`.
+- **Das Warum bleibt.** Bei `project`-Einträgen gehört der Grund einer Entscheidung
+  dazu — und was verworfen wurde. Sonst dreht ein späterer Agent eine bewusst
+  gewählte Richtung mit gutem Gewissen zurück.
 
 Gepflegt wird an Anlässen, nicht an Terminen: Bei jeder Richtungsänderung werden
 betroffene Einträge im selben Zug nachgezogen; bei jedem Fehler, der auf einen
@@ -156,8 +186,10 @@ Ergebnis.
 
 ## Block 6 — Abschluss und Übergabe in die Begleitung
 
-1. **Gegenprobe.** Der Nutzer benennt die drei Grundbilder in eigenen Worten — nicht
-   vorlesen, abnehmen. Was fehlt, an einem Erlebnis nachfassen statt nachsagen.
+1. **Gegenprobe.** Der Nutzer benennt die vier Grundbilder in eigenen Worten — nicht
+   vorlesen, abnehmen. Zusätzlich: die Absicht in einem Satz, und was davon
+   Festlegung und was Vermutung ist. Was fehlt, an einem Erlebnis nachfassen statt
+   nachsagen.
 2. **Begleitnotiz anlegen.** Ein `project-`-Memory-Eintrag hält fest: Begleitung
    aktiv, Grad „eng geführt" mit Einrichtungsdatum, offene Punkte aus dem Setup.
    Mehr Apparat braucht die Begleitung nicht — der Mentor benutzt ab jetzt das

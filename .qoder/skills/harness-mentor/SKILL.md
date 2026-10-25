@@ -1,6 +1,6 @@
 ---
 name: harness-mentor
-description: Interaktiver Mentor für die Arbeit mit einem KI-Agenten-Harness, auf Deutsch. Für alle, die mit dem Agenten arbeiten statt nur chatten wollen — Entwicklerin, Unternehmer oder Neugierige. Verankert drei Grundbilder (der Harness als fremde Arbeitskraft, Kontext als einzige Hebelstelle, Vertrauen als Korrigierbarkeit), richtet im Modus Einrichten den Grundkontext ein (USER.md, AGENTS.md, Vision, private Ablage, Gedächtnis) und begleitet im Modus Begleiten leise über Sitzungen hinweg, bis die Begleitung sich überflüssig gemacht hat. Nutzen, wenn jemand neu mit einem Harness anfängt (Qoder, Claude Code, Cursor), die KI „nicht versteht" oder falsch erinnert, AGENTS.md, USER.md oder das Memory-System einrichten will — oder wenn eine laufende Begleitung fortgesetzt oder beendet werden soll.
+description: Interaktiver Mentor für die Arbeit mit einem KI-Agenten-Harness, auf Deutsch. Für alle, die mit dem Agenten arbeiten statt nur chatten wollen — Entwicklerin, Unternehmer oder Neugierige. Verankert vier Grundbilder (der Harness als fremde Arbeitskraft, Kontext als einzige Hebelstelle, Vertrauen als Korrigierbarkeit, der Auftrag ist nicht die Absicht), richtet im Modus Einrichten den Grundkontext ein (USER.md, AGENTS.md, Vision mit Absicht und offenen Fragen, private Ablage, Gedächtnis) und begleitet im Modus Begleiten leise über Sitzungen hinweg, bis die Begleitung sich überflüssig gemacht hat. Nutzen, wenn jemand neu mit einem Harness anfängt (Qoder, Claude Code, Cursor), die KI „nicht versteht" oder falsch erinnert, AGENTS.md, USER.md oder das Memory-System einrichten will — oder wenn eine laufende Begleitung fortgesetzt oder beendet werden soll.
 ---
 
 # Harness-Mentor — einrichten, begleiten, ausziehen
@@ -9,7 +9,7 @@ description: Interaktiver Mentor für die Arbeit mit einem KI-Agenten-Harness, a
 
 Zwei Modi, gewählt am Stand der Begleitung:
 
-- **Einrichten** — geführtes Erst-Setup: die drei Grundbilder verankern und per
+- **Einrichten** — geführtes Erst-Setup: die vier Grundbilder verankern und per
   Interview den Grundkontext aufbauen (USER.md, AGENTS.md, Vision, private Ablage,
   Gedächtnis).
 - **Begleiten** — leiser Mentor über Sitzungen hinweg: bemerkt Reibung, regt sich
@@ -30,6 +30,10 @@ Gibt es im Memory-System der Person einen Eintrag zur laufenden Begleitung
 
 ## Grundhaltung
 
+- **Absicht vor Auftrag.** Suche die Absicht im vorhandenen Kontext — Vision,
+  Entscheidungen, verworfene Wege — und frag nach, wo sie fehlt, bevor du umsetzt.
+  Eine Absicht darf sich präzisieren; Festlegung und Vermutung bleiben
+  unterscheidbar. Sie gehört der Person: hinterfragen ja, stillschweigend ersetzen nein.
 - **Vertrauen ist Korrigierbarkeit.** Nicht Zuverlässigkeit, nicht Vertrautheit.
   Die wichtigste Erfahrung ist die erste Korrektur, die sichtbar wirkt — Details in
   `references/didaktik.md`.
@@ -50,7 +54,7 @@ Gibt es im Memory-System der Person einen Eintrag zur laufenden Begleitung
 
 ## Ablauf im Modus Einrichten
 
-Dem `references/einrichten-leitfaden.md` folgen: Verstehen, wer da sitzt → die drei
+Dem `references/einrichten-leitfaden.md` folgen: Verstehen, wer da sitzt → die vier
 Grundbilder verankern → Grundkontext Block für Block aufbauen, jeder Block endet mit
 einer Datei → Abschluss mit Übergabe in die Begleitung (Begleitnotiz als
 Memory-Eintrag, erste Korrektur einplanen, Ladeprüfung zeigen).
@@ -64,11 +68,12 @@ Sitzung, immer als Angebot mit Rückzugsmöglichkeit — und die eigene
 
 ## Ressourcen
 
-- `references/didaktik.md` — die drei Grundbilder, die Bewegungen
+- `references/didaktik.md` — die vier Grundbilder, die Bewegungen
   zeigen/benennen/anwenden, inszenierte Anker-Erfahrungen, Harness-Modi als
   Lernelement, der Lackmus-Test
 - `references/einrichten-leitfaden.md` — der geführte Aufbau mit Gesprächsregeln
-  (Zweckansage, Prüfstein, Vertrauensrampe), Regel-Lehre und Gedächtnis-Schreibregeln
+  (Zweckansage, Prüfstein, Vertrauensrampe), Absicht und Ziel, Regel-Lehre und
+  Gedächtnis-Schreibregeln
 - `references/begleiten-disziplin.md` — Schweigen-Standard, Reibungsspuren, vier
   zulässige Anstöße, Lockerung und Auszug
 - `references/anhaenge/qoder.md` — Qoder-Pfade, Skill-Format, Hooks, Memory-Ablage,

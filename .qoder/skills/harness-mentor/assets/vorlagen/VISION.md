@@ -1,21 +1,32 @@
 # Vision — <Workspace-Name>
 
-<!-- Warum es diesen Workspace gibt. Der Agent arbeitet besser, wenn er weiß,
-     wozu die Arbeit dient — sonst optimiert er das Falsche.
-     Eine Seite ist genug. Ehrlich sein: Was ungewiss ist, als ungewiss markieren. -->
+<!-- Warum es diesen Workspace gibt. Der Agent arbeitet besser, wenn er die
+     Absicht kennt — sonst optimiert er das Falsche. Eine Seite ist genug.
+     Ehrlich sein: Was ungewiss ist, als ungewiss markieren. -->
 
-## Was entstehen soll
+## Was sich verändern soll
 
-<!-- Zwei bis vier Sätze. Nicht die Aufgabenliste — das Ziel dahinter. -->
+<!-- Wofür, für wen — nicht das Produkt, das Ziel dahinter.
+     Beispiel: „Entscheidungen mit größerer Sicherheit treffen" statt „ein Dashboard". -->
 
-## Warum es sich lohnt
+## Woran wir merken, dass es gut ist
 
-<!-- Was ist heute mühsam, teuer oder unmöglich, das es dann nicht mehr ist? -->
+<!-- Gutes Ergebnis und was sich falsch anfühlen würde. Das „falsch" ist oft
+     konkreter als das „gut". -->
+
+## Was gilt — und was Vermutung ist
+
+<!-- Nicht verhandelbar: Regeln, Sicherheit, Werte — mit Fundort.
+     Vorläufig: Produkt, Technik, Architektur, Strategie. -->
+
+## Was offen ist
+
+<!-- Fragen, die nur durch Ausprobieren beantwortet werden können.
+     Als offen stehen lassen, nicht vorschnell beantworten. -->
 
 ## Aktuelle Herausforderungen
 
-<!-- Woran es gerade hakt. Dieser Abschnitt veraltet am schnellsten:
-     mit Datum versehen und bei jeder größeren Richtungsänderung nachziehen. -->
+<!-- Woran es gerade hakt. Mit Datum; veraltet am schnellsten. -->
 
 ## Woran wir scheitern könnten
 

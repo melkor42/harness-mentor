@@ -14,6 +14,8 @@ __pycache__/
 
 # Arbeitsausgaben, die nicht in den Bestand gehören
 .scratch/
+.sandbox/
+.runs/
 .firecrawl/
 tmp/
 *.log
@@ -21,3 +23,6 @@ tmp/
 # Betrieb
 data/
 postgres-data/
+
+# Evaluationsausgaben bleiben lokal bis zur gesonderten Veröffentlichungsentscheidung.
+evals/results/
